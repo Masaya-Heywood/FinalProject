@@ -1,0 +1,13 @@
+These scripts are best used for enemy path finding only.
+A* Pathfinding is good for reaching a target (Our Player) in the shortest amount of time possible. 
+
+The Grid script creates a grid for the enemies to walk on
+
+The node script is the "brains" behind grid, each node holds the variables that enemies use to determine
+if they are optimal to walk in or not. Don't assign to anything
+
+The pathfinding script is self explanitory, it finds paths for enemies. Don't assign to anything.
+
+The heap script is for optimization purposes. Don't touch.
+
+The Unit script must be attached to enemies for them to use the navigation system.
