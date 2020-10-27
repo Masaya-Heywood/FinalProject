@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 mousePosition = new Vector2(0, 0);
     private Vector3 mouseDirection = new Vector2(0, 0);
     private Vector3 constantMousePosition = new Vector2(0, 0);
-    public float initalSpeed = 200f;
+    public float initalSpeed = 0f;
     public float constantSpeed = 50f;
     private float actualInitialSpeed = 0f;
     //private bool movement = false;
@@ -46,12 +46,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb2D.velocity = Vector3.zero;
         }
-        //Debug.Log(dist);
-
-
-        //Movement Execution
-
-
 
         //Rotation
 
@@ -62,7 +56,5 @@ public class PlayerMovement : MonoBehaviour
 
         float RotationZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, RotationZ - 90);
-
-        //Movement
     }
 }
