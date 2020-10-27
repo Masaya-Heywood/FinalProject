@@ -654,8 +654,8 @@ MonoBehaviour:
   thisSprite: {fileID: 940737929}
   rb2D: {fileID: 940737931}
   mousePosition: {x: 0, y: 0, z: 0}
-  initalSpeed: 200
-  constantSpeed: 150
+  initalSpeed: 1
+  constantSpeed: 0.05
 --- !u!212 &940737929
 SpriteRenderer:
   m_ObjectHideFlags: 0
