@@ -41,14 +41,24 @@ public class PlayerController : MonoBehaviour
 
 
         //player movement with veolocity
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+            rb.velocity = new Vector3(-speed, speed, 0);
+        else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+            rb.velocity = new Vector3(speed, speed, 0);
+        else if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.S))
+            rb.velocity = new Vector3(-speed, -speed, 0);
+        else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+            rb.velocity = new Vector3(speed, -speed, 0);
+
+        else if (Input.GetKey(KeyCode.A))
             rb.velocity = new Vector3(-speed, 0, 0);
-        if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D))
             rb.velocity = new Vector3(speed, 0, 0);
-        if (Input.GetKey(KeyCode.W))
+        else if (Input.GetKey(KeyCode.W))
             rb.velocity = new Vector3(0, speed, 0);
-        if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S))
             rb.velocity = new Vector3(0, -speed, 0);
+
         else if(Input.GetKeyUp(KeyCode.A))
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
         else if (Input.GetKeyUp(KeyCode.D))
