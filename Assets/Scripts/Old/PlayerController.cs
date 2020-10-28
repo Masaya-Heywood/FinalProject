@@ -26,10 +26,13 @@ public class PlayerController : MonoBehaviour
     //the interval you can shoot the bullets
     public float shotInterval;
 
+    private Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
         bulletPrefab = ((GameObject)Resources.Load("bullet")).GetComponent<BulletController>();
+        rb = this.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -37,15 +40,25 @@ public class PlayerController : MonoBehaviour
     {
 
 
-        // move the player according to the key input
-        if(Input.GetKey(KeyCode.A))
-            transform.localPosition += new Vector3(-1, 0, 0) * speed * Time.deltaTime;
+        //player movement with veolocity
+        if (Input.GetKey(KeyCode.A))
+            rb.velocity = new Vector3(-speed, 0, 0);
         if (Input.GetKey(KeyCode.D))
-            transform.localPosition += new Vector3(1, 0, 0) * speed * Time.deltaTime;
+            rb.velocity = new Vector3(speed, 0, 0);
         if (Input.GetKey(KeyCode.W))
-            transform.localPosition += new Vector3(0, 1, 0) * speed * Time.deltaTime;
+            rb.velocity = new Vector3(0, speed, 0);
         if (Input.GetKey(KeyCode.S))
-            transform.localPosition += new Vector3(0, -1, 0) * speed * Time.deltaTime;
+            rb.velocity = new Vector3(0, -speed, 0);
+        else if(Input.GetKeyUp(KeyCode.A))
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        else if (Input.GetKeyUp(KeyCode.D))
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        else if (Input.GetKeyUp(KeyCode.W))
+            rb.velocity = new Vector3(rb.velocity.x, 0, 0);
+        else if (Input.GetKeyUp(KeyCode.S))
+            rb.velocity = new Vector3(rb.velocity.x, 0, 0);
+
+
 
 
 

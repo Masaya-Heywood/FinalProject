@@ -18,7 +18,6 @@ public class ShootProjectile : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //gameObject.GetComponent<AudioSource>().Play();
 
             GameObject newBullet = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
 
