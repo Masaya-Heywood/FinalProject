@@ -25,31 +25,31 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //Inital Movement -- We can edit this movement to be on pressing the WASD keys instead of mouse button. We wouldn't need a mouseDirection if we do.
-        if (Input.GetKey(KeyCode.A))
-        {
-            mouseDirection += transform.right;
-        }
+        //if (Input.GetKey(KeyCode.A))
+        //{
+        //    mouseDirection += transform.right;
+        //}
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            mouseDirection += -transform.right;
-        }
+        //if (Input.GetKey(KeyCode.D))
+        //{
+        //    mouseDirection += -transform.right;
+        //}
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            mouseDirection += transform.forward;
-        }
+        //if (Input.GetKey(KeyCode.W))
+        //{
+        //    mouseDirection += transform.up;
+        //}
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            mouseDirection += -transform.forward;
-        }
+        //if (Input.GetKey(KeyCode.S))
+        //{
+        //    mouseDirection += -transform.up;
+        //}
 
-        rb2D.velocity = mouseDirection * (constantSpeed * Time.deltaTime);
+        //rb2D.velocity = mouseDirection * (constantSpeed * Time.deltaTime);
 
-        //Vector2 inputVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        //inputVector = inputVector.normalized;
-        //rb2D.velocity = (inputVector * constantSpeed) + new Vector2(0, rb2D.velocity.y);
+        Vector2 inputvector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        inputvector = inputvector.normalized;
+        rb2D.velocity = (inputvector * constantSpeed) + new Vector2(0, rb2D.velocity.y);
 
 
 

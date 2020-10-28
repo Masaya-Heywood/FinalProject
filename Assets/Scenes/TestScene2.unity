@@ -628,10 +628,10 @@ GameObject:
   m_Component:
   - component: {fileID: 940737930}
   - component: {fileID: 940737929}
-  - component: {fileID: 940737928}
   - component: {fileID: 940737931}
   - component: {fileID: 940737933}
   - component: {fileID: 940737932}
+  - component: {fileID: 940737928}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -648,14 +648,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 940737927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f86fc08cb6b126140830f11300b1c7e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 99e6656af8c03524c867f2d45a6a402b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisSprite: {fileID: 940737929}
-  rb2D: {fileID: 940737931}
-  mousePosition: {x: 0, y: 0, z: 0}
-  initalSpeed: 1
-  constantSpeed: 0.05
+  speed: 3
+  shotSpeed: 0
+  shotAngleRange: 0
+  shotCount: 0
+  shotInterval: 0
 --- !u!212 &940737929
 SpriteRenderer:
   m_ObjectHideFlags: 0
