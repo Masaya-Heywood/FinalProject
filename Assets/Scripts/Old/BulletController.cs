@@ -5,18 +5,14 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     //speed of the bullet
-    private Vector3 speed; 
+    private Vector3 speed;
+    private Rigidbody2D rb;
 
-    // 毎フレーム呼び出される関数
-    private void Update()
-    {
-        // 移動する
-        transform.localPosition += speed;
-    }
-
-    // 弾を発射する時に初期化するための関数
+    // Intitialize the bullet 
     public void Init(float angle, float speed)
     {
+        rb = this.GetComponent<Rigidbody2D>();
+
         // change the bullet angle to vector
         var direction = GetDirection(angle);
 
@@ -27,6 +23,8 @@ public class BulletController : MonoBehaviour
         var angles = transform.localEulerAngles;
         angles.z = angle - 90;
         transform.localEulerAngles = angles;
+
+        rb.velocity = this.speed;
 
         // destory after 2 seconds
         Destroy(gameObject, 2);
@@ -42,6 +40,12 @@ public class BulletController : MonoBehaviour
             Mathf.Sin(angle * Mathf.Deg2Rad),
             0
         );
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (this.gameObject.tag == "bulletNormal" && collision.gameObject.tag == "wall")
+            Destroy(this.gameObject);
     }
 
 

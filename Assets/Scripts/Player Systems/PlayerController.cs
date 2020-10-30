@@ -28,16 +28,53 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    private Animator animKnife;
+
+    private bool useKnife = false;
+
+    private GameObject knife;
+
     // Start is called before the first frame update
     void Start()
     {
-        bulletPrefab = ((GameObject)Resources.Load("bullet")).GetComponent<BulletController>();
+        bulletPrefab = ((GameObject)Resources.Load("bulletNormal")).GetComponent<BulletController>();
         rb = this.GetComponent<Rigidbody2D>();
+        animKnife = (GameObject.Find("sampleKnife")).GetComponent<Animator>();
+        knife = GameObject.Find("sampleKnife");
+        knife.SetActive(false);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        //changing weapons
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            bulletPrefab = ((GameObject)Resources.Load("bulletNormal")).GetComponent<BulletController>();
+            useKnife = false;
+            knife.SetActive(false);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+
+            bulletPrefab = ((GameObject)Resources.Load("bulletPenetrate")).GetComponent<BulletController>();
+            useKnife = false;
+            knife.SetActive(false);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            bulletPrefab = ((GameObject)Resources.Load("bulletBounce")).GetComponent<BulletController>();
+            useKnife = false;
+            knife.SetActive(false);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            useKnife = true;
+            knife.SetActive(true);
+        }
+
 
 
         //player movement with veolocity
@@ -92,14 +129,26 @@ public class PlayerController : MonoBehaviour
 
 
         //shooting bullets
-        if (Input.GetMouseButtonDown(0) && (shotTimer > shotInterval))
+        if (Input.GetMouseButtonDown(0))
         {
+            if (useKnife)
+            {
+                //start knife animation
+                animKnife.SetTrigger("onClick");
+            }
+            else
+            {
+                if (shotTimer > shotInterval)
+                {
 
-            //reset the timer
-            shotTimer = 0;
+                    //reset the timer
+                    shotTimer = 0;
 
-            //shoot bullet
-            ShootNWay(angle, shotAngleRange, shotSpeed, shotCount);
+                    //shoot bullet
+                    ShootNWay(angle, shotAngleRange, shotSpeed, shotCount);
+
+                }
+            }
 
         }else shotTimer += Time.deltaTime;
 
