@@ -6,6 +6,10 @@ TagManager:
   tags:
   - bulletNormal
   - wall
+  - itemWeapon1
+  - itemWeapon2
+  - itemWeapon3
+  - itemWeapon4
   layers:
   - Default
   - TransparentFX

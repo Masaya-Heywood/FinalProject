@@ -26,23 +26,48 @@ public class PlayerController : MonoBehaviour
     //the interval you can shoot the bullets
     public float shotInterval;
 
+    //player's rigid body2d
     private Rigidbody2D rb;
 
+    //animation for knife
     private Animator animKnife;
 
+    //if the player is using knife
     private bool useKnife = false;
 
+    //if the player have weapons
+    private bool hasWeapon1 = true;
+    private bool hasWeapon2 = false;
+    private bool hasWeapon3 = false;
+    private bool hasWeapon4 = false;
+
+    //sprites in the item slot
+    private GameObject spriteWeapon1;
+    private GameObject spriteWeapon2;
+    private GameObject spriteWeapon3;
+    private GameObject spriteWeapon4;
+
+    //the knife object
     private GameObject knife;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         bulletPrefab = ((GameObject)Resources.Load("bulletNormal")).GetComponent<BulletController>();
         rb = this.GetComponent<Rigidbody2D>();
         animKnife = (GameObject.Find("sampleKnife")).GetComponent<Animator>();
         knife = GameObject.Find("sampleKnife");
         knife.SetActive(false);
-        
+
+        spriteWeapon1 = GameObject.Find("slotWeapon1");
+        spriteWeapon2 = GameObject.Find("slotWeapon2");
+        spriteWeapon2.SetActive(false);
+        spriteWeapon3 = GameObject.Find("slotWeapon3");
+        spriteWeapon3.SetActive(false);
+        spriteWeapon4 = GameObject.Find("slotWeapon4");
+        spriteWeapon4.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -50,26 +75,26 @@ public class PlayerController : MonoBehaviour
     {
 
         //changing weapons
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1) && hasWeapon1)
         {
             bulletPrefab = ((GameObject)Resources.Load("bulletNormal")).GetComponent<BulletController>();
             useKnife = false;
             knife.SetActive(false);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && hasWeapon2)
         {
 
             bulletPrefab = ((GameObject)Resources.Load("bulletPenetrate")).GetComponent<BulletController>();
             useKnife = false;
             knife.SetActive(false);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        else if (Input.GetKeyDown(KeyCode.Alpha3) && hasWeapon3)
         {
             bulletPrefab = ((GameObject)Resources.Load("bulletBounce")).GetComponent<BulletController>();
             useKnife = false;
             knife.SetActive(false);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        else if (Input.GetKeyDown(KeyCode.Alpha4) && hasWeapon4)
         {
             useKnife = true;
             knife.SetActive(true);
@@ -154,6 +179,28 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //get the weapons
+        if (collision.tag == "itemWeapon2") {
+            spriteWeapon2.SetActive(true);
+            hasWeapon2 = true;
+            Destroy(collision.gameObject);
+        }
+        if (collision.tag == "itemWeapon3")
+        {
+            spriteWeapon3.SetActive(true);
+            hasWeapon3 = true;
+            Destroy(collision.gameObject);
+        }
+        if (collision.tag == "itemWeapon4")
+        {
+            spriteWeapon4.SetActive(true);
+            hasWeapon4 = true;
+            Destroy(collision.gameObject);
+        }
+    }
+
 
     //function for getting the angle between two positions
     float GetAngle(Vector2 from, Vector2 to)
@@ -198,4 +245,7 @@ public class PlayerController : MonoBehaviour
             shot.Init(angleBase, speed);
         }
     }
+
+    
+    
 }
