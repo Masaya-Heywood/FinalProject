@@ -50,6 +50,9 @@ public class PlayerController : MonoBehaviour
     //the knife object
     private GameObject knife;
 
+    //dialogue manager
+    private DialogueManager dialogueManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +62,7 @@ public class PlayerController : MonoBehaviour
         animKnife = (GameObject.Find("sampleKnife")).GetComponent<Animator>();
         knife = GameObject.Find("sampleKnife");
         knife.SetActive(false);
+        dialogueManager = GameObject.Find("Dialogue").GetComponent<DialogueManager>();
 
         spriteWeapon1 = GameObject.Find("slotWeapon1");
         spriteWeapon2 = GameObject.Find("slotWeapon2");
@@ -73,6 +77,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //Debug for text system
+        if (Input.GetKeyDown(KeyCode.T)) {
+            //display dialogue
+            GameObject.Find("SampleDialogue").GetComponent<DialogueTrigger>().TriggerDialogue();
+            GameObject.Find("DialogueBox").GetComponent<RectTransform>().localPosition = new Vector3(-16, -178, 0);
+        }
+        if (Input.GetKeyDown(KeyCode.N)) {
+            //display next sentence
+            dialogueManager.DisplayNextSentence();
+        }
+        //delete the code above after testing the dialogue system
 
         //changing weapons
         if (Input.GetKeyDown(KeyCode.Alpha1) && hasWeapon1)
