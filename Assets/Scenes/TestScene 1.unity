@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  shotSpeed: 0.1
+  shotSpeed: 0.2
   shotAngleRange: 20
   shotCount: 3
   shotInterval: 0.5
