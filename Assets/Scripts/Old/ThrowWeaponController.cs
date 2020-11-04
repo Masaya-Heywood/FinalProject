@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletController : MonoBehaviour
+public class ThrowWeaponController : MonoBehaviour
 {
     //speed of the bullet
     private Vector3 speed;
     private Rigidbody2D rb;
 
+    private Collider2D col;
+
     // Intitialize the bullet 
     public void Init(float angle, float speed)
     {
         rb = this.GetComponent<Rigidbody2D>();
+        col = this.GetComponent<Collider2D>();
 
         // change the bullet angle to vector
         var direction = GetDirection(angle);
@@ -26,8 +29,6 @@ public class BulletController : MonoBehaviour
 
         rb.velocity = this.speed;
 
-        // destory after 2 seconds
-        Destroy(gameObject, 2);
     }
 
 
@@ -42,10 +43,13 @@ public class BulletController : MonoBehaviour
         );
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (this.gameObject.tag == "bulletNormal" && collision.gameObject.tag == "wall")
-            Destroy(this.gameObject);
+        if (collision.gameObject.tag == "wall")
+        {
+            col.isTrigger = true;
+            rb.velocity = Vector2.zero;
+        }
     }
 
 

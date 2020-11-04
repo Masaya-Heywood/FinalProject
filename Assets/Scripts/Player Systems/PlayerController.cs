@@ -13,7 +13,10 @@ public class PlayerController : MonoBehaviour
     //variables for bullet
 
     // bullet prefab
-    private BulletController bulletPrefab; 
+    private BulletController bulletPrefab;
+
+    // throw weapon prefab
+    private ThrowWeaponController throwWeaponPrefab;
     // the speed of the bullet
     public float shotSpeed; 
     //the angle for the bullet when you are shooting multiple
@@ -32,23 +35,19 @@ public class PlayerController : MonoBehaviour
     //animation for knife
     private Animator animKnife;
 
-    //if the player is using knife
-    private bool useKnife = false;
 
     //if the player have weapons
-    private bool hasWeapon1 = true;
-    private bool hasWeapon2 = false;
-    private bool hasWeapon3 = false;
-    private bool hasWeapon4 = false;
+    private bool[] hasWeapon = new bool[4];
 
     //sprites in the item slot
-    private GameObject spriteWeapon1;
-    private GameObject spriteWeapon2;
-    private GameObject spriteWeapon3;
-    private GameObject spriteWeapon4;
+    private GameObject[] spriteWeapon = new GameObject[4];
+
 
     //the knife object
     private GameObject knife;
+
+    //the weapon which is currently used
+    private int weaponNum = 1;
 
     //dialogue manager
     private DialogueManager dialogueManager;
@@ -64,13 +63,14 @@ public class PlayerController : MonoBehaviour
         knife.SetActive(false);
         dialogueManager = GameObject.Find("Dialogue").GetComponent<DialogueManager>();
 
-        spriteWeapon1 = GameObject.Find("slotWeapon1");
-        spriteWeapon2 = GameObject.Find("slotWeapon2");
-        spriteWeapon2.SetActive(false);
-        spriteWeapon3 = GameObject.Find("slotWeapon3");
-        spriteWeapon3.SetActive(false);
-        spriteWeapon4 = GameObject.Find("slotWeapon4");
-        spriteWeapon4.SetActive(false);
+        hasWeapon[0] = true;
+        spriteWeapon[0] = GameObject.Find("slotWeapon1");
+        spriteWeapon[1] = GameObject.Find("slotWeapon2");
+        spriteWeapon[1].SetActive(false);
+        spriteWeapon[2] = GameObject.Find("slotWeapon3");
+        spriteWeapon[2].SetActive(false);
+        spriteWeapon[3] = GameObject.Find("slotWeapon4");
+        spriteWeapon[3].SetActive(false);
 
     }
 
@@ -90,30 +90,34 @@ public class PlayerController : MonoBehaviour
         }
         //delete the code above after testing the dialogue system
 
+
         //changing weapons
-        if (Input.GetKeyDown(KeyCode.Alpha1) && hasWeapon1)
+        if (Input.GetKeyDown(KeyCode.Alpha1) && hasWeapon[0])
         {
             bulletPrefab = ((GameObject)Resources.Load("bulletNormal")).GetComponent<BulletController>();
-            useKnife = false;
             knife.SetActive(false);
+            weaponNum = 1;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && hasWeapon2)
+        else if (Input.GetKeyDown(KeyCode.Alpha2) && hasWeapon[1])
         {
 
             bulletPrefab = ((GameObject)Resources.Load("bulletPenetrate")).GetComponent<BulletController>();
-            useKnife = false;
+            throwWeaponPrefab = ((GameObject)Resources.Load("throwWeapon2")).GetComponent<ThrowWeaponController>();
             knife.SetActive(false);
+            weaponNum = 2;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3) && hasWeapon3)
+        else if (Input.GetKeyDown(KeyCode.Alpha3) && hasWeapon[2])
         {
             bulletPrefab = ((GameObject)Resources.Load("bulletBounce")).GetComponent<BulletController>();
-            useKnife = false;
+            throwWeaponPrefab = ((GameObject)Resources.Load("throwWeapon3")).GetComponent<ThrowWeaponController>();
             knife.SetActive(false);
+            weaponNum = 3;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha4) && hasWeapon4)
+        else if (Input.GetKeyDown(KeyCode.Alpha4) && hasWeapon[3])
         {
-            useKnife = true;
+            throwWeaponPrefab = ((GameObject)Resources.Load("throwWeapon4")).GetComponent<ThrowWeaponController>();
             knife.SetActive(true);
+            weaponNum = 4;
         }
 
 
@@ -172,7 +176,7 @@ public class PlayerController : MonoBehaviour
         //shooting bullets
         if (Input.GetMouseButtonDown(0))
         {
-            if (useKnife)
+            if (weaponNum == 4)
             {
                 //start knife animation
                 animKnife.SetTrigger("onClick");
@@ -193,26 +197,33 @@ public class PlayerController : MonoBehaviour
 
         }else shotTimer += Time.deltaTime;
 
+        //throw weapon
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            ThrowWeapon(angle, shotAngleRange, shotSpeed);
+
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //get the weapons
         if (collision.tag == "itemWeapon2") {
-            spriteWeapon2.SetActive(true);
-            hasWeapon2 = true;
+            spriteWeapon[1].SetActive(true);
+            hasWeapon[1] = true;
             Destroy(collision.gameObject);
         }
         if (collision.tag == "itemWeapon3")
         {
-            spriteWeapon3.SetActive(true);
-            hasWeapon3 = true;
+            spriteWeapon[2].SetActive(true);
+            hasWeapon[2] = true;
             Destroy(collision.gameObject);
         }
         if (collision.tag == "itemWeapon4")
         {
-            spriteWeapon4.SetActive(true);
-            hasWeapon4 = true;
+            spriteWeapon[3].SetActive(true);
+            hasWeapon[3] = true;
             Destroy(collision.gameObject);
         }
     }
@@ -262,6 +273,34 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    
-    
+    private void ThrowWeapon(float angleBase, float angleRange, float speed)
+    {
+        //return if you don't have the weapon
+        if (!hasWeapon[weaponNum - 1] || weaponNum == 1) return;
+
+        
+        //player position
+        var pos = transform.localPosition;
+        //player rotation
+        var rot = transform.localRotation;
+        
+            // instantiate the bullet
+        var shot = Instantiate(throwWeaponPrefab, pos, rot);
+
+            // set the bullet angle and speed
+        shot.Init(angleBase, speed);
+
+        
+
+        //reset the variables for thrown weapon
+        knife.SetActive(false);
+        spriteWeapon[weaponNum - 1].SetActive(false);
+
+        //change to default weapon
+        weaponNum = 1;
+
+    }
+
+
+
 }
