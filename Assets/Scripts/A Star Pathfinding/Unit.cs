@@ -11,6 +11,7 @@ public class Unit : MonoBehaviour
 	public float speed = 20;
 	public int aggroThreshold = 10;
 	private Rigidbody2D rb2D;
+	public GameObject mySpawner;
 
 
 	Vector2[] path;
@@ -77,7 +78,14 @@ public class Unit : MonoBehaviour
 		}
 	}
 
-	public void OnDrawGizmos()
+
+
+    private void OnDestroy()
+    {
+		mySpawner.GetComponent<EnemySpawner>().currentEnemies -= 1;
+    }
+
+    public void OnDrawGizmos()
 	{
 		if (path != null)
 		{
