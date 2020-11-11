@@ -10,6 +10,9 @@ TagManager:
   - itemWeapon2
   - itemWeapon3
   - itemWeapon4
+  - ammo1
+  - ammo2
+  - ammo3
   layers:
   - Default
   - TransparentFX

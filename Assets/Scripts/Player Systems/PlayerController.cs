@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -43,6 +45,20 @@ public class PlayerController : MonoBehaviour
     private GameObject[] spriteWeapon = new GameObject[4];
 
 
+    //variables for ammo system
+    //ammo text
+    private Text[] ammoNumText = new Text[3];
+    //highLight
+    private GameObject[] highLight = new GameObject[4];
+    //ammo num
+    private int[] ammoNum = new int[3];
+    //the ammo you can collect
+    private int collectNum = 3;
+    //the max ammo you can have
+    private int maxAmmo = 36;
+    //weapon in ammo slot
+    private GameObject[] ammoWeapon = new GameObject[4];
+
     //the knife object
     private GameObject knife;
 
@@ -64,13 +80,29 @@ public class PlayerController : MonoBehaviour
         dialogueManager = GameObject.Find("Dialogue").GetComponent<DialogueManager>();
 
         hasWeapon[0] = true;
-        spriteWeapon[0] = GameObject.Find("slotWeapon1");
-        spriteWeapon[1] = GameObject.Find("slotWeapon2");
-        spriteWeapon[1].SetActive(false);
-        spriteWeapon[2] = GameObject.Find("slotWeapon3");
-        spriteWeapon[2].SetActive(false);
-        spriteWeapon[3] = GameObject.Find("slotWeapon4");
-        spriteWeapon[3].SetActive(false);
+        for (int i = 0; i < 4; i++) {
+            ammoWeapon[i] = GameObject.Find("ammoWeapon" + (i + 1));
+
+            spriteWeapon[i] = GameObject.Find("slotWeapon" + (i+1));
+            highLight[i] = GameObject.Find("highLight" + (i + 1));
+            if (i != 0)
+            {
+                spriteWeapon[i].SetActive(false);
+                highLight[i].SetActive(false);
+                
+            }
+
+            if (i != 3)
+            {
+                //initializing ammo variables
+                ammoNumText[i] = GameObject.Find("numText" + (i + 1)).GetComponent<Text>();
+                ammoNum[i] = 0;
+            }
+
+            
+        }
+        for (int i = 0; i < 3; i++)
+            ammoWeapon[i+1].SetActive(false);
 
     }
 
@@ -94,9 +126,12 @@ public class PlayerController : MonoBehaviour
         //changing weapons
         if (Input.GetKeyDown(KeyCode.Alpha1) && hasWeapon[0])
         {
+            
             bulletPrefab = ((GameObject)Resources.Load("bulletNormal")).GetComponent<BulletController>();
-            knife.SetActive(false);
+            knife.SetActive(false);            
             weaponNum = 1;
+            eraseHighLight();
+            highLight[weaponNum - 1].SetActive(true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2) && hasWeapon[1])
         {
@@ -105,6 +140,8 @@ public class PlayerController : MonoBehaviour
             throwWeaponPrefab = ((GameObject)Resources.Load("throwWeapon2")).GetComponent<ThrowWeaponController>();
             knife.SetActive(false);
             weaponNum = 2;
+            eraseHighLight();
+            highLight[weaponNum - 1].SetActive(true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3) && hasWeapon[2])
         {
@@ -112,12 +149,16 @@ public class PlayerController : MonoBehaviour
             throwWeaponPrefab = ((GameObject)Resources.Load("throwWeapon3")).GetComponent<ThrowWeaponController>();
             knife.SetActive(false);
             weaponNum = 3;
+            eraseHighLight();
+            highLight[weaponNum - 1].SetActive(true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4) && hasWeapon[3])
         {
             throwWeaponPrefab = ((GameObject)Resources.Load("throwWeapon4")).GetComponent<ThrowWeaponController>();
             knife.SetActive(true);
             weaponNum = 4;
+            eraseHighLight();
+            highLight[weaponNum - 1].SetActive(true);
         }
 
 
@@ -183,8 +224,10 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                if (shotTimer > shotInterval)
+                if (ammoNum[weaponNum-1] >= shotCount &&  shotTimer > shotInterval)
                 {
+                    ammoNum[weaponNum - 1] -= shotCount;
+                    ammoNumText[weaponNum - 1].text = ammoNum[weaponNum - 1].ToString();
 
                     //reset the timer
                     shotTimer = 0;
@@ -213,17 +256,41 @@ public class PlayerController : MonoBehaviour
             spriteWeapon[1].SetActive(true);
             hasWeapon[1] = true;
             Destroy(collision.gameObject);
+            ammoWeapon[1].SetActive(true);
         }
         if (collision.tag == "itemWeapon3")
         {
             spriteWeapon[2].SetActive(true);
             hasWeapon[2] = true;
             Destroy(collision.gameObject);
+            ammoWeapon[2].SetActive(true);
         }
         if (collision.tag == "itemWeapon4")
         {
             spriteWeapon[3].SetActive(true);
             hasWeapon[3] = true;
+            Destroy(collision.gameObject);
+            ammoWeapon[3].SetActive(true);
+        }
+
+        if (hasWeapon[0] && collision.tag == "ammo1") {
+            if(ammoNum[0] + collectNum < maxAmmo)
+                ammoNum[0] += collectNum;
+            ammoNumText[0].text = ammoNum[0].ToString();
+            Destroy(collision.gameObject);
+        }
+        if (hasWeapon[1] && collision.tag == "ammo2")
+        {
+            if (ammoNum[2] + collectNum < maxAmmo)
+                ammoNum[1] += collectNum;
+            ammoNumText[1].text = ammoNum[1].ToString();
+            Destroy(collision.gameObject);
+        }
+        if (hasWeapon[2] && collision.tag == "ammo3")
+        {
+            if (ammoNum[2] + collectNum < maxAmmo)
+                ammoNum[2] += collectNum;
+            ammoNumText[2].text = ammoNum[2].ToString();
             Destroy(collision.gameObject);
         }
     }
@@ -301,6 +368,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void eraseHighLight()
+    {
+        for (int i = 0; i < 4; i++)
+            highLight[i].SetActive(false);
+    }
 
 
 }
