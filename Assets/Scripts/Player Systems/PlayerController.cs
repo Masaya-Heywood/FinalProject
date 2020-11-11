@@ -68,6 +68,10 @@ public class PlayerController : MonoBehaviour
     //dialogue manager
     private DialogueManager dialogueManager;
 
+    //lower body transform
+    private Transform transLowerBody;
+    private SpriteRenderer spriteLowerBody;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -78,6 +82,8 @@ public class PlayerController : MonoBehaviour
         knife = GameObject.Find("sampleKnife");
         knife.SetActive(false);
         dialogueManager = GameObject.Find("Dialogue").GetComponent<DialogueManager>();
+        transLowerBody = GameObject.Find("lowerBody").transform;
+        spriteLowerBody = GameObject.Find("lowerBody").GetComponent<SpriteRenderer>();
 
         hasWeapon[0] = true;
         for (int i = 0; i < 4; i++) {
@@ -109,7 +115,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        transLowerBody.position = this.transform.position;
         //Debug for text system
         if (Input.GetKeyDown(KeyCode.T)) {
             //display dialogue
@@ -161,30 +167,52 @@ public class PlayerController : MonoBehaviour
             highLight[weaponNum - 1].SetActive(true);
         }
 
-
+        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+        {
+            spriteLowerBody.color = new Color(0, 0, 0, 1);
+        }
+        else
+        {
+            spriteLowerBody.color = new Color(0, 0, 0, 0);
+        }
 
         //player movement with veolocity
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
+        {
             rb.velocity = new Vector3(-speed, speed, 0);
-        else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+            transLowerBody.rotation = Quaternion.Euler(0, 0, 45);
+        }
+        else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D)) { 
             rb.velocity = new Vector3(speed, speed, 0);
-        else if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.S))
+            transLowerBody.rotation = Quaternion.Euler(0, 0, 315);
+        }
+        else if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.S)) { 
             rb.velocity = new Vector3(-speed, -speed, 0);
-        else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+            transLowerBody.rotation = Quaternion.Euler(0, 0, 135);
+        }
+        else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D)) { 
             rb.velocity = new Vector3(speed, -speed, 0);
-
-        else if (Input.GetKey(KeyCode.A))
+            transLowerBody.rotation = Quaternion.Euler(0, 0, 225);
+        }
+        else if (Input.GetKey(KeyCode.A)) { 
             rb.velocity = new Vector3(-speed, 0, 0);
-        else if (Input.GetKey(KeyCode.D))
+            transLowerBody.rotation = Quaternion.Euler(0, 0, 90);
+        }
+        else if (Input.GetKey(KeyCode.D)) { 
             rb.velocity = new Vector3(speed, 0, 0);
-        else if (Input.GetKey(KeyCode.W))
+            transLowerBody.rotation = Quaternion.Euler(0, 0, 270);
+        }
+        else if (Input.GetKey(KeyCode.W)) { 
             rb.velocity = new Vector3(0, speed, 0);
-        else if (Input.GetKey(KeyCode.S))
+            transLowerBody.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else if (Input.GetKey(KeyCode.S)) { 
             rb.velocity = new Vector3(0, -speed, 0);
-
-        else if(Input.GetKeyUp(KeyCode.A))
+            transLowerBody.rotation = Quaternion.Euler(0, 0, 180);
+        }
+        else if (Input.GetKeyUp(KeyCode.A)) 
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
-        else if (Input.GetKeyUp(KeyCode.D))
+        else if (Input.GetKeyUp(KeyCode.D))  
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
         else if (Input.GetKeyUp(KeyCode.W))
             rb.velocity = new Vector3(rb.velocity.x, 0, 0);
