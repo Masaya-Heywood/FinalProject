@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1569669033659582062}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.96, y: -1.53, z: 4.9124117}
-  m_LocalScale: {x: 0.021517582, y: 0.022767881, z: 0.22580473}
+  m_LocalScale: {x: 0.08, y: 0.09, z: 0.22580473}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -98,8 +98,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 100
-  aggroThreshold: 10
+  speed: 200
+  aggroThreshold: 20
+  mySpawner: {fileID: 0}
   pathDirection: {x: 0, y: 0}
   dist: 0
 --- !u!61 &1569669033659582053
