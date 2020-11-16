@@ -3312,7 +3312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc75f784113914647b79ea3d2499ad48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorTexture: {fileID: 0}
+  cursorTexture: {fileID: 2800000, guid: f346d6c338904f448ad16ecc0076f7e8, type: 3}
   selectSpot: {x: 0, y: 0}
   cursorMode: 0
 --- !u!1 &1362422450
