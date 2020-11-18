@@ -35,20 +35,12 @@ public class fiendLogic : MonoBehaviour
         //rb2D.velocity = unitCalcs.target.position * (unitCalcs.speed * Time.deltaTime);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // if collision has tag "projectile", get hurt and reduce projectile durability
-        if (collision.gameObject.CompareTag("Projectile"))
+        if (collision.gameObject.CompareTag("bulletNormal") || collision.gameObject.CompareTag("bulletPenetrate"))
         {
-            health -= collision.gameObject.GetComponent<ProjectileLogic>().projDmg;
-            --collision.gameObject.GetComponent<ProjectileLogic>().projDura;
-
-            //destroy projectile if it has no durability left
-            if (collision.gameObject.GetComponent<ProjectileLogic>().projDura <= 0)
-            {
-                Destroy(collision.gameObject);
-
-            }
+            health -= collision.gameObject.GetComponent<BulletController>().bulletDamage;
+            Destroy(collision.gameObject);
 
             //die if health is 0
             if (health == 0)
@@ -57,7 +49,21 @@ public class fiendLogic : MonoBehaviour
                 //player.health++;
             }
         }
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("bulletBounce"))
+        {
+            health -= collision.gameObject.GetComponent<BulletController>().bulletDamage;
+            Destroy(collision.gameObject);
 
+            //die if health is 0
+            if (health == 0)
+            {
+                Destroy(gameObject);
+                //player.health++;
+            }
+        }
         if (collision.gameObject.CompareTag("Player"))
         {
             //collision.gameObject.GetComponent<PlayerController>().health--;

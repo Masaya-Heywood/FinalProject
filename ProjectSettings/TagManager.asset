@@ -14,6 +14,8 @@ TagManager:
   - ammo2
   - ammo3
   - Projectile
+  - bulletBounce
+  - bulletPenetrate
   layers:
   - Default
   - TransparentFX

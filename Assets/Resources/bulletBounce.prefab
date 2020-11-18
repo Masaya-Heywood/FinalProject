@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3846403957271518413}
   m_Layer: 10
   m_Name: bulletBounce
-  m_TagString: Untagged
+  m_TagString: bulletBounce
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a57a46cf35ead54fab77c88e6dfae98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletDamage: 1
 --- !u!50 &2928350421812719712
 Rigidbody2D:
   serializedVersion: 4
