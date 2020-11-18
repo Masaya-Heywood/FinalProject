@@ -7,6 +7,7 @@ public class BulletController : MonoBehaviour
     //speed of the bullet
     private Vector3 speed;
     private Rigidbody2D rb;
+    public int bulletDamage = 1;
 
     // Intitialize the bullet 
     public void Init(float angle, float speed)

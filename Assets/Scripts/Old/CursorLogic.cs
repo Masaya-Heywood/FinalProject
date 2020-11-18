@@ -21,6 +21,7 @@ public class CursorLogic : MonoBehaviour
 
     private void Update()
     {
+        
         if (!setCursor)
         {
             //set the cursor in the first call of Update
