@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
     //player's rigid body2d
     private Rigidbody2D rb;
 
+    //player's animator
+    public Animator animator;
+
     //animation for knife
     private Animator animKnife;
 
@@ -81,6 +84,7 @@ public class PlayerController : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         animKnife = (GameObject.Find("sampleKnife")).GetComponent<Animator>();
         knife = GameObject.Find("sampleKnife");
+        //animator = GameObject.Find("Dialogue").GetComponent<DialogueManager>();
         knife.SetActive(false);
         dialogueManager = GameObject.Find("Dialogue").GetComponent<DialogueManager>();
         transLowerBody = GameObject.Find("lowerBody").transform;
@@ -133,7 +137,7 @@ public class PlayerController : MonoBehaviour
         //changing weapons
         if (Input.GetKeyDown(KeyCode.Alpha1) && hasWeapon[0])
         {
-            
+            animator.SetBool("hasPistol", true);
             bulletPrefab = ((GameObject)Resources.Load("bulletNormal")).GetComponent<BulletController>();
             knife.SetActive(false);            
             weaponNum = 1;
@@ -184,44 +188,74 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector3(-speed, speed, 0);
             transLowerBody.rotation = Quaternion.Euler(0, 0, 45);
+            animator.SetBool("walking", true);
         }
-        else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D)) { 
+        else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
+        {
             rb.velocity = new Vector3(speed, speed, 0);
             transLowerBody.rotation = Quaternion.Euler(0, 0, 315);
+            animator.SetBool("walking", true);
         }
-        else if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.S)) { 
+        else if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.S))
+        {
             rb.velocity = new Vector3(-speed, -speed, 0);
             transLowerBody.rotation = Quaternion.Euler(0, 0, 135);
+            animator.SetBool("walking", true);
         }
-        else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D)) { 
+        else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+        {
             rb.velocity = new Vector3(speed, -speed, 0);
             transLowerBody.rotation = Quaternion.Euler(0, 0, 225);
+            animator.SetBool("walking", true);
         }
-        else if (Input.GetKey(KeyCode.A)) { 
+        else if (Input.GetKey(KeyCode.A))
+        {
             rb.velocity = new Vector3(-speed, 0, 0);
             transLowerBody.rotation = Quaternion.Euler(0, 0, 90);
+            animator.SetBool("walking", true);
         }
-        else if (Input.GetKey(KeyCode.D)) { 
+        else if (Input.GetKey(KeyCode.D))
+        {
             rb.velocity = new Vector3(speed, 0, 0);
             transLowerBody.rotation = Quaternion.Euler(0, 0, 270);
+            animator.SetBool("walking", true);
         }
-        else if (Input.GetKey(KeyCode.W)) { 
+        else if (Input.GetKey(KeyCode.W))
+        {
             rb.velocity = new Vector3(0, speed, 0);
             transLowerBody.rotation = Quaternion.Euler(0, 0, 0);
+            animator.SetBool("walking", true);
         }
-        else if (Input.GetKey(KeyCode.S)) { 
+        else if (Input.GetKey(KeyCode.S))
+        {
             rb.velocity = new Vector3(0, -speed, 0);
             transLowerBody.rotation = Quaternion.Euler(0, 0, 180);
+            animator.SetBool("walking", true);
         }
-        else if (Input.GetKeyUp(KeyCode.A)) 
+        else if (Input.GetKeyUp(KeyCode.A))
+        {
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
-        else if (Input.GetKeyUp(KeyCode.D))  
+            animator.SetBool("walking", true);
+        }
+        else if (Input.GetKeyUp(KeyCode.D))
+        {
             rb.velocity = new Vector3(0, rb.velocity.y, 0);
+            animator.SetBool("walking", true);
+        }
         else if (Input.GetKeyUp(KeyCode.W))
+        {
             rb.velocity = new Vector3(rb.velocity.x, 0, 0);
+            animator.SetBool("walking", true);
+        }
         else if (Input.GetKeyUp(KeyCode.S))
+        {
             rb.velocity = new Vector3(rb.velocity.x, 0, 0);
-
+            animator.SetBool("walking", true);
+        }
+        else
+        {
+            animator.SetBool("walking", false);
+        }
 
 
 
