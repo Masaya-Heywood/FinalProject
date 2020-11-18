@@ -11,6 +11,16 @@ public class CameraManager : MonoBehaviour
 
     public Vector3 initialPos;
 
+    private PlayerController player;
+
+    //how much the mouse movement affects the Camera
+    public float moveByMouse = 0.1f;
+
+    private void Start()
+    {
+        player = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
+
     private void FixedUpdate()
     {
         if (!target) return;
@@ -21,6 +31,8 @@ public class CameraManager : MonoBehaviour
         var point = camera.WorldToViewportPoint(targetPosition);
         var delta = targetPosition - camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, point.z));
         var destination = selfPosition + delta;
-        transform.position = Vector3.SmoothDamp(selfPosition, destination + initialPos, ref velocity, dampTime);
+        var mouseAng = new Vector3(Mathf.Cos(Mathf.Deg2Rad*player.getMouseAngle()), Mathf.Sin(Mathf.Deg2Rad * player.getMouseAngle()),0);
+        mouseAng *= moveByMouse;
+        transform.position = Vector3.SmoothDamp(selfPosition + mouseAng, destination + initialPos + mouseAng, ref velocity, dampTime);
     }
 }

@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     //animation for knife
     private Animator animKnife;
 
+    private float mouseAngle;
 
     //if the player have weapons
     private bool[] hasWeapon = new bool[4];
@@ -174,7 +175,8 @@ public class PlayerController : MonoBehaviour
         else
         {
             spriteLowerBody.color = new Color(0, 0, 0, 0);
-            rb.velocity = new Vector3(0, 0, 0);
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = 0;
         }
 
         //player movement with veolocity
@@ -235,10 +237,13 @@ public class PlayerController : MonoBehaviour
         // get the angle of where the mouse cursor is
         var angle = GetAngle(Vector3.zero, direction);
 
+        
+
         // rotate the player to where the mouse cursor is at
         var angles = transform.localEulerAngles;
         angles.z = angle - 90;
         transform.localEulerAngles = angles;
+        mouseAngle = angle;
 
 
 
@@ -402,6 +407,12 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < 4; i++)
             highLight[i].SetActive(false);
     }
+
+    public float getMouseAngle()
+    {
+        return mouseAngle;
+    }
+
 
 
 }
