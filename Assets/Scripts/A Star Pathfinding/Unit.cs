@@ -73,6 +73,7 @@ public class Unit : MonoBehaviour
 				pathDirection = (currentWaypoint - (Vector2)transform.position).normalized;
                 if(rb2D != null)
 				    rb2D.velocity = pathDirection * (speed * Time.deltaTime);
+					transform.up = rb2D.velocity;
 				yield return null;
 
 			}
