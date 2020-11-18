@@ -174,6 +174,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             spriteLowerBody.color = new Color(0, 0, 0, 0);
+            rb.velocity = new Vector3(0, 0, 0);
         }
 
         //player movement with veolocity
