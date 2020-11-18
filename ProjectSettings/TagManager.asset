@@ -13,6 +13,7 @@ TagManager:
   - ammo1
   - ammo2
   - ammo3
+  - Projectile
   layers:
   - Default
   - TransparentFX

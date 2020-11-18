@@ -71,7 +71,8 @@ public class Unit : MonoBehaviour
 				//transform.position = Vector2.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
 
 				pathDirection = (currentWaypoint - (Vector2)transform.position).normalized;
-				rb2D.velocity = pathDirection * (speed * Time.deltaTime);
+                if(rb2D != null)
+				    rb2D.velocity = pathDirection * (speed * Time.deltaTime);
 				yield return null;
 
 			}
@@ -82,7 +83,8 @@ public class Unit : MonoBehaviour
 
     private void OnDestroy()
     {
-		mySpawner.GetComponent<EnemySpawner>().currentEnemies -= 1;
+        if(mySpawner != null)
+		    mySpawner.GetComponent<EnemySpawner>().currentEnemies -= 1;
     }
 
     public void OnDrawGizmos()
