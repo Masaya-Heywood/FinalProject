@@ -23,6 +23,7 @@ public class Unit : MonoBehaviour
 	{
 		StartCoroutine(RefreshPath());
 		rb2D = gameObject.GetComponent<Rigidbody2D>();
+		target = GameObject.Find("Player").GetComponent<Transform>();
 	}
 
 	void Update()

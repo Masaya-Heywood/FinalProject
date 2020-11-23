@@ -16,6 +16,7 @@ TagManager:
   - Projectile
   - bulletBounce
   - bulletPenetrate
+  - tile
   layers:
   - Default
   - TransparentFX

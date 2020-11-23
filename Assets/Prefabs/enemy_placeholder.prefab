@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 200
-  aggroThreshold: 20
+  speed: 50
+  aggroThreshold: 100
   mySpawner: {fileID: 0}
   pathDirection: {x: 0, y: 0}
   dist: 0
