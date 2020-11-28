@@ -81,6 +81,8 @@ public class PlayerController : MonoBehaviour
     private float enemyForce = 10.0f;
     private float hitEnemyTimer = 0;
 
+    private float weaponAnimCount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -126,6 +128,15 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         transLowerBody.position = this.transform.position;
+        if (weaponAnimCount > 0)
+        {
+            weaponAnimCount -= Time.deltaTime;
+            if (weaponAnimCount <= 0)
+            {
+                animator.SetBool("hasPistol", false);
+                Debug.Log("has poistol is false");
+            }
+        }
 
         if (hitEnemyTimer > 0)
         {
@@ -149,7 +160,6 @@ public class PlayerController : MonoBehaviour
         //changing weapons
         if (Input.GetKeyDown(KeyCode.Alpha1) && hasWeapon[0])
         {
-            animator.SetBool("hasPistol", true);
             bulletPrefab = ((GameObject)Resources.Load("bulletNormal")).GetComponent<BulletController>();
             knife.SetActive(false);            
             weaponNum = 1;
@@ -307,6 +317,9 @@ public class PlayerController : MonoBehaviour
             {
                 if (ammoNum[weaponNum-1] >= shotCount &&  shotTimer > shotInterval)
                 {
+
+                    animator.SetBool("hasPistol", true);
+                    weaponAnimCount = 0.5f;
                     ammoNum[weaponNum - 1] -= shotCount;
                     ammoNumText[weaponNum - 1].text = ammoNum[weaponNum - 1].ToString();
 
@@ -421,6 +434,7 @@ public class PlayerController : MonoBehaviour
                 // calculate the bullent angle
                 var angle = angleBase + angleRange * ((float)i / (count - 1) - 0.5f);
 
+                pos += new Vector3(0.0f, 0.0f, 0);
                 // instantiate the bullet
                 var shot = Instantiate(bulletPrefab, pos, rot);
 
