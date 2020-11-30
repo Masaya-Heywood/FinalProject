@@ -25,11 +25,11 @@ public class hpManager : MonoBehaviour
 
         //testDamageForDebug
         if (Input.GetKeyDown(KeyCode.O)) {
-            takeDamate(0.2f);
+            takeDamage(0.2f);
         }
     }
 
-    public void takeDamate(float damage) {
+    public void takeDamage(float damage) {
         this.damage = damage;
         counter = 0;
     }

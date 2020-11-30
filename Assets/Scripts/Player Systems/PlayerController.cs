@@ -76,10 +76,17 @@ public class PlayerController : MonoBehaviour
     private Transform transLowerBody;
     private SpriteRenderer spriteLowerBody;
 
+    private hpManager hitPointManager;
+
+    private float enemyForce = 10.0f;
+    private float hitEnemyTimer = 0;
+
+    private float weaponAnimCount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        hitPointManager = GameObject.Find("hpFull").GetComponent<hpManager>();
         bulletPrefab = ((GameObject)Resources.Load("bulletNormal")).GetComponent<BulletController>();
         rb = this.GetComponent<Rigidbody2D>();
         animKnife = (GameObject.Find("sampleKnife")).GetComponent<Animator>();
@@ -121,6 +128,22 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         transLowerBody.position = this.transform.position;
+        if (weaponAnimCount > 0)
+        {
+            weaponAnimCount -= Time.deltaTime;
+            if (weaponAnimCount <= 0)
+            {
+                animator.SetBool("hasPistol", false);
+                Debug.Log("has poistol is false");
+            }
+        }
+
+        if (hitEnemyTimer > 0)
+        {
+            hitEnemyTimer -= Time.deltaTime;
+            return;
+        }
+
         //Debug for text system
         if (Input.GetKeyDown(KeyCode.T)) {
             //display dialogue
@@ -137,7 +160,6 @@ public class PlayerController : MonoBehaviour
         //changing weapons
         if (Input.GetKeyDown(KeyCode.Alpha1) && hasWeapon[0])
         {
-            animator.SetBool("hasPistol", true);
             bulletPrefab = ((GameObject)Resources.Load("bulletNormal")).GetComponent<BulletController>();
             knife.SetActive(false);            
             weaponNum = 1;
@@ -254,6 +276,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            rb.velocity = Vector3.zero;
             animator.SetBool("walking", false);
         }
 
@@ -294,6 +317,9 @@ public class PlayerController : MonoBehaviour
             {
                 if (ammoNum[weaponNum-1] >= shotCount &&  shotTimer > shotInterval)
                 {
+
+                    animator.SetBool("hasPistol", true);
+                    weaponAnimCount = 0.5f;
                     ammoNum[weaponNum - 1] -= shotCount;
                     ammoNumText[weaponNum - 1].text = ammoNum[weaponNum - 1].ToString();
 
@@ -317,8 +343,26 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //take damage from enemy
+        if (collision.gameObject.tag == "enemy1")
+        {
+            
+            hitPointManager.takeDamage(0.1f);
+            float f = GetAngle(collision.gameObject.transform.position, this.transform.position);
+            Debug.Log(GetDirection(f));
+            //rb.AddForce(GetDirection(f)*enemyForce, ForceMode2D.Impulse);
+            rb.velocity = GetDirection(f) * enemyForce;
+
+            hitEnemyTimer = 0.5f;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
+
         //get the weapons
         if (collision.tag == "itemWeapon2") {
             spriteWeapon[1].SetActive(true);
@@ -390,6 +434,7 @@ public class PlayerController : MonoBehaviour
                 // calculate the bullent angle
                 var angle = angleBase + angleRange * ((float)i / (count - 1) - 0.5f);
 
+                pos += new Vector3(0.0f, 0.0f, 0);
                 // instantiate the bullet
                 var shot = Instantiate(bulletPrefab, pos, rot);
 
@@ -447,6 +492,17 @@ public class PlayerController : MonoBehaviour
         return mouseAngle;
     }
 
+
+    //function to the the angle and return the vector value of it
+    public Vector3 GetDirection(float angle)
+    {
+        return new Vector3
+        (
+            Mathf.Cos(angle * Mathf.Deg2Rad),
+            Mathf.Sin(angle * Mathf.Deg2Rad),
+            0
+        );
+    }
 
 
 }
