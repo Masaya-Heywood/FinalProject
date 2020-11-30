@@ -18,6 +18,7 @@ TagManager:
   - bulletPenetrate
   - tile
   - enemy1
+  - textDoor
   layers:
   - Default
   - TransparentFX
@@ -54,4 +55,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: particles
+    uniqueID: 3330483453
     locked: 0
