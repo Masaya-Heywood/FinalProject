@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     //ammo num
     private int[] ammoNum = new int[3];
     //the ammo you can collect
-    private int collectNum = 3;
+    private int collectNum = 6;
     //the max ammo you can have
     private int maxAmmo = 36;
     //weapon in ammo slot
@@ -76,10 +76,44 @@ public class PlayerController : MonoBehaviour
     private Transform transLowerBody;
     private SpriteRenderer spriteLowerBody;
 
+    private hpManager hitPointManager;
+
+    private float enemyForce = 8.0f;
+    private float hitEnemyTimer = 0;
+
+    private float weaponAnimCount = 0;
+
+    private AudioSource audioSource;
+    public AudioClip ammoSound;
+    public AudioClip shootSound1;
+    public AudioClip getWeapon;
+    public AudioClip enemyAtackStound;
+    public AudioClip openDoor;
+    private CameraShake mainCamera;
+
+    public GameObject clearCanvas;
+
+    private GameObject particlePrefab;
+
+    private int defeatEnemyCount = 0;
+
+    private Text enemyCountText;
+
+    private bool talkDoor = false;
+
+    private bool clearGame = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+ 
+        enemyCountText = GameObject.Find("EnemyDefeatText").GetComponent<Text>();
+        particlePrefab = ((GameObject)Resources.Load("BloodEffect"));
+
+        audioSource = this.GetComponent<AudioSource>();
+
+        mainCamera = GameObject.Find("Main Camera").GetComponent<CameraShake>();
+
+        hitPointManager = GameObject.Find("hpFull").GetComponent<hpManager>();
         bulletPrefab = ((GameObject)Resources.Load("bulletNormal")).GetComponent<BulletController>();
         rb = this.GetComponent<Rigidbody2D>();
         animKnife = (GameObject.Find("sampleKnife")).GetComponent<Animator>();
@@ -120,14 +154,36 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (clearGame)
+            return;
+
         transLowerBody.position = this.transform.position;
-        //Debug for text system
-        if (Input.GetKeyDown(KeyCode.T)) {
-            //display dialogue
-            GameObject.Find("SampleDialogue").GetComponent<DialogueTrigger>().TriggerDialogue();
-            GameObject.Find("DialogueBox").GetComponent<RectTransform>().localPosition = new Vector3(-16, -178, 0);
+        if (weaponAnimCount > 0)
+        {
+            weaponAnimCount -= Time.deltaTime;
+            if (weaponAnimCount <= 0)
+            {
+                animator.SetBool("hasPistol", false);
+                //Debug.Log("has poistol is false");
+            }
         }
-        if (Input.GetKeyDown(KeyCode.N)) {
+
+        if (hitEnemyTimer > 0)
+        {
+            hitEnemyTimer -= Time.deltaTime;
+
+            if (hitEnemyTimer <= 0)
+                this.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
+            else
+            {
+                this.GetComponent<SpriteRenderer>().color = new Color(1, 0.7f, 0.7f);
+            }
+
+            return;
+        }
+
+        
+        if (Input.GetKeyDown(KeyCode.Space)) {
             //display next sentence
             dialogueManager.DisplayNextSentence();
         }
@@ -137,11 +193,11 @@ public class PlayerController : MonoBehaviour
         //changing weapons
         if (Input.GetKeyDown(KeyCode.Alpha1) && hasWeapon[0])
         {
-            animator.SetBool("hasPistol", true);
             bulletPrefab = ((GameObject)Resources.Load("bulletNormal")).GetComponent<BulletController>();
             knife.SetActive(false);            
             weaponNum = 1;
             eraseHighLight();
+            audioSource.PlayOneShot(getWeapon);
             highLight[weaponNum - 1].SetActive(true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2) && hasWeapon[1])
@@ -152,6 +208,7 @@ public class PlayerController : MonoBehaviour
             knife.SetActive(false);
             weaponNum = 2;
             eraseHighLight();
+            audioSource.PlayOneShot(getWeapon);
             highLight[weaponNum - 1].SetActive(true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3) && hasWeapon[2])
@@ -161,6 +218,7 @@ public class PlayerController : MonoBehaviour
             knife.SetActive(false);
             weaponNum = 3;
             eraseHighLight();
+            audioSource.PlayOneShot(getWeapon);
             highLight[weaponNum - 1].SetActive(true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4) && hasWeapon[3])
@@ -169,6 +227,7 @@ public class PlayerController : MonoBehaviour
             knife.SetActive(true);
             weaponNum = 4;
             eraseHighLight();
+            audioSource.PlayOneShot(getWeapon);
             highLight[weaponNum - 1].SetActive(true);
         }
 
@@ -254,6 +313,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            rb.velocity = Vector3.zero;
             animator.SetBool("walking", false);
         }
 
@@ -294,6 +354,11 @@ public class PlayerController : MonoBehaviour
             {
                 if (ammoNum[weaponNum-1] >= shotCount &&  shotTimer > shotInterval)
                 {
+                    audioSource.PlayOneShot(shootSound1);
+                    mainCamera.Shake(0.25f,0.1f);
+
+                    animator.SetBool("hasPistol", true);
+                    weaponAnimCount = 0.5f;
                     ammoNum[weaponNum - 1] -= shotCount;
                     ammoNumText[weaponNum - 1].text = ammoNum[weaponNum - 1].ToString();
 
@@ -317,14 +382,66 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //take damage from enemy
+        if (collision.gameObject.tag == "enemy1")
+        {
+            if (clearGame)
+                return;
+            audioSource.PlayOneShot(enemyAtackStound);            
+            hitPointManager.takeDamage(0.2f);
+            float f = GetAngle(collision.gameObject.transform.position, this.transform.position);
+
+            //rb.AddForce(GetDirection(f)*enemyForce, ForceMode2D.Impulse);
+            rb.velocity = GetDirection(f) * enemyForce;
+
+            hitEnemyTimer = 0.3f;
+            
+            Invoke("startParticle", 0.3f);
+        }
+
+       
+    }
+
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "textDoor")
+        {
+            
+            //Debug for text system
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (defeatEnemyCount >= 5) {
+                    clearCanvas.SetActive(true);
+                    talkDoor = true;
+                    audioSource.PlayOneShot(openDoor);
+                    clearGame = true;
+                }
+                //display dialogue
+                if (!talkDoor)
+                {
+                    GameObject.Find("DoorDialogue").GetComponent<DialogueTrigger>().TriggerDialogue();
+                    GameObject.Find("DialogueBox").GetComponent<RectTransform>().localPosition = new Vector3(-16, -178, 0);
+                    talkDoor = true;
+                }
+
+
+            }
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         //get the weapons
         if (collision.tag == "itemWeapon2") {
             spriteWeapon[1].SetActive(true);
             hasWeapon[1] = true;
             Destroy(collision.gameObject);
             ammoWeapon[1].SetActive(true);
+            audioSource.PlayOneShot(getWeapon);
         }
         if (collision.tag == "itemWeapon3")
         {
@@ -332,6 +449,7 @@ public class PlayerController : MonoBehaviour
             hasWeapon[2] = true;
             Destroy(collision.gameObject);
             ammoWeapon[2].SetActive(true);
+            audioSource.PlayOneShot(getWeapon);
         }
         if (collision.tag == "itemWeapon4")
         {
@@ -339,26 +457,35 @@ public class PlayerController : MonoBehaviour
             hasWeapon[3] = true;
             Destroy(collision.gameObject);
             ammoWeapon[3].SetActive(true);
+            audioSource.PlayOneShot(getWeapon);
         }
 
         if (hasWeapon[0] && collision.tag == "ammo1") {
+
             if(ammoNum[0] + collectNum < maxAmmo)
                 ammoNum[0] += collectNum;
+
             ammoNumText[0].text = ammoNum[0].ToString();
+            audioSource.PlayOneShot(ammoSound);
             Destroy(collision.gameObject);
+
         }
         if (hasWeapon[1] && collision.tag == "ammo2")
         {
             if (ammoNum[2] + collectNum < maxAmmo)
                 ammoNum[1] += collectNum;
+
             ammoNumText[1].text = ammoNum[1].ToString();
+            audioSource.PlayOneShot(ammoSound);
             Destroy(collision.gameObject);
         }
         if (hasWeapon[2] && collision.tag == "ammo3")
         {
             if (ammoNum[2] + collectNum < maxAmmo)
                 ammoNum[2] += collectNum;
+
             ammoNumText[2].text = ammoNum[2].ToString();
+            audioSource.PlayOneShot(ammoSound);
             Destroy(collision.gameObject);
         }
     }
@@ -373,6 +500,10 @@ public class PlayerController : MonoBehaviour
         return rad * Mathf.Rad2Deg;
     }
 
+    private void startParticle()
+    {
+        Instantiate(particlePrefab, this.transform.position, Quaternion.identity);
+    }
 
     private void ShootNWay(float angleBase, float angleRange, float speed, int count)
     {
@@ -390,6 +521,7 @@ public class PlayerController : MonoBehaviour
                 // calculate the bullent angle
                 var angle = angleBase + angleRange * ((float)i / (count - 1) - 0.5f);
 
+                pos += new Vector3(0.0f, 0.0f, 0);
                 // instantiate the bullet
                 var shot = Instantiate(bulletPrefab, pos, rot);
 
@@ -448,5 +580,21 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    //function to the the angle and return the vector value of it
+    public Vector3 GetDirection(float angle)
+    {
+        return new Vector3
+        (
+            Mathf.Cos(angle * Mathf.Deg2Rad),
+            Mathf.Sin(angle * Mathf.Deg2Rad),
+            0
+        );
+    }
+
+    public void defeatEnemy() {
+        defeatEnemyCount++;
+        enemyCountText.text = defeatEnemyCount.ToString();
+
+    }
 
 }

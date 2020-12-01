@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class hpManager : MonoBehaviour
 {
@@ -19,17 +20,20 @@ public class hpManager : MonoBehaviour
 
             counter += Time.deltaTime;
 
-            if(hpImage.fillAmount >= 0)
+            if (hpImage.fillAmount > 0)
                 hpImage.fillAmount -= Time.deltaTime;
+            else 
+                SceneManager.LoadScene("LevelOne");
         }
 
+        
         //testDamageForDebug
         if (Input.GetKeyDown(KeyCode.O)) {
-            takeDamate(0.2f);
+            takeDamage(0.2f);
         }
     }
 
-    public void takeDamate(float damage) {
+    public void takeDamage(float damage) {
         this.damage = damage;
         counter = 0;
     }
