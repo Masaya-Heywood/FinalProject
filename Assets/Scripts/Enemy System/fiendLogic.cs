@@ -25,7 +25,7 @@ public class fiendLogic : MonoBehaviour
     private void Start()
     {
         totalHealth = health;
-        particlePrefab = ((GameObject)Resources.Load("BloodEffect"));
+        particlePrefab = ((GameObject)Resources.Load("BloodEffectEnemy"));
         audioSource = this.GetComponent<AudioSource>();
         unitCalcs = gameObject.GetComponent<Unit>();
         rb2D = gameObject.GetComponent<Rigidbody2D>();
@@ -56,6 +56,24 @@ public class fiendLogic : MonoBehaviour
             health -= collision.gameObject.GetComponent<BulletController>().bulletDamage;
             hpImage.fillAmount -= collision.gameObject.GetComponent<BulletController>().bulletDamage / totalHealth;
             Destroy(collision.gameObject);
+            Instantiate(particlePrefab, this.transform.position, Quaternion.identity);
+
+
+
+            //die if health is 0
+            if (health == 0)
+            {
+                playerCharacter.GetComponent<PlayerController>().defeatEnemy();
+                Destroy(gameObject);
+                //player.health++;
+            }
+        }
+
+        if (collision.gameObject.CompareTag("blade"))
+        {
+            audioSource.PlayOneShot(hitSound);
+            health -= 1;
+            hpImage.fillAmount -= 1 / totalHealth;
             Instantiate(particlePrefab, this.transform.position, Quaternion.identity);
 
 

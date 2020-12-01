@@ -19,6 +19,7 @@ TagManager:
   - tile
   - enemy1
   - textDoor
+  - blade
   layers:
   - Default
   - TransparentFX

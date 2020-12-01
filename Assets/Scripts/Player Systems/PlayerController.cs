@@ -37,9 +37,6 @@ public class PlayerController : MonoBehaviour
     //player's animator
     public Animator animator;
 
-    //animation for knife
-    private Animator animKnife;
-
     private float mouseAngle;
 
     //if the player have weapons
@@ -63,8 +60,6 @@ public class PlayerController : MonoBehaviour
     //weapon in ammo slot
     private GameObject[] ammoWeapon = new GameObject[4];
 
-    //the knife object
-    private GameObject knife;
 
     //the weapon which is currently used
     private int weaponNum = 1;
@@ -89,6 +84,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip getWeapon;
     public AudioClip enemyAtackStound;
     public AudioClip openDoor;
+    public AudioClip bladeSwing;
+
     private CameraShake mainCamera;
 
     public GameObject clearCanvas;
@@ -102,10 +99,18 @@ public class PlayerController : MonoBehaviour
     private bool talkDoor = false;
 
     private bool clearGame = false;
+
+    private float bladeTimer = 0;
+
+    private GameObject bladeHitBox;
+
     // Start is called before the first frame update
     void Start()
     {
- 
+
+        bladeHitBox = GameObject.Find("BladeHitBox");
+        bladeHitBox.SetActive(false);
+
         enemyCountText = GameObject.Find("EnemyDefeatText").GetComponent<Text>();
         particlePrefab = ((GameObject)Resources.Load("BloodEffect"));
 
@@ -116,10 +121,9 @@ public class PlayerController : MonoBehaviour
         hitPointManager = GameObject.Find("hpFull").GetComponent<hpManager>();
         bulletPrefab = ((GameObject)Resources.Load("bulletNormal")).GetComponent<BulletController>();
         rb = this.GetComponent<Rigidbody2D>();
-        animKnife = (GameObject.Find("sampleKnife")).GetComponent<Animator>();
-        knife = GameObject.Find("sampleKnife");
+
         //animator = GameObject.Find("Dialogue").GetComponent<DialogueManager>();
-        knife.SetActive(false);
+        bladeHitBox.SetActive(false);
         dialogueManager = GameObject.Find("Dialogue").GetComponent<DialogueManager>();
         transLowerBody = GameObject.Find("lowerBody").transform;
         spriteLowerBody = GameObject.Find("lowerBody").GetComponent<SpriteRenderer>();
@@ -157,6 +161,13 @@ public class PlayerController : MonoBehaviour
         if (clearGame)
             return;
 
+        if (bladeTimer > 0) {
+            bladeTimer -= Time.deltaTime;
+            if (bladeTimer <= 0) {
+                animator.SetBool("hasBlade", false);
+                bladeHitBox.SetActive(false);
+            }
+        }
         transLowerBody.position = this.transform.position;
         if (weaponAnimCount > 0)
         {
@@ -191,40 +202,39 @@ public class PlayerController : MonoBehaviour
 
 
         //changing weapons
-        if (Input.GetKeyDown(KeyCode.Alpha1) && hasWeapon[0])
+        if (Input.GetKeyDown(KeyCode.Alpha2) && hasWeapon[0])
         {
             bulletPrefab = ((GameObject)Resources.Load("bulletNormal")).GetComponent<BulletController>();
-            knife.SetActive(false);            
+            
             weaponNum = 1;
             eraseHighLight();
             audioSource.PlayOneShot(getWeapon);
             highLight[weaponNum - 1].SetActive(true);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && hasWeapon[1])
+        else if (Input.GetKeyDown(KeyCode.Alpha3) && hasWeapon[1])
         {
 
             bulletPrefab = ((GameObject)Resources.Load("bulletPenetrate")).GetComponent<BulletController>();
             throwWeaponPrefab = ((GameObject)Resources.Load("throwWeapon2")).GetComponent<ThrowWeaponController>();
-            knife.SetActive(false);
+
             weaponNum = 2;
             eraseHighLight();
             audioSource.PlayOneShot(getWeapon);
             highLight[weaponNum - 1].SetActive(true);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3) && hasWeapon[2])
+        else if (Input.GetKeyDown(KeyCode.Alpha4) && hasWeapon[2])
         {
             bulletPrefab = ((GameObject)Resources.Load("bulletBounce")).GetComponent<BulletController>();
             throwWeaponPrefab = ((GameObject)Resources.Load("throwWeapon3")).GetComponent<ThrowWeaponController>();
-            knife.SetActive(false);
+
             weaponNum = 3;
             eraseHighLight();
             audioSource.PlayOneShot(getWeapon);
             highLight[weaponNum - 1].SetActive(true);
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha4) && hasWeapon[3])
+        else if (Input.GetKeyDown(KeyCode.Alpha1) && hasWeapon[3])
         {
             throwWeaponPrefab = ((GameObject)Resources.Load("throwWeapon4")).GetComponent<ThrowWeaponController>();
-            knife.SetActive(true);
             weaponNum = 4;
             eraseHighLight();
             audioSource.PlayOneShot(getWeapon);
@@ -345,10 +355,15 @@ public class PlayerController : MonoBehaviour
         //shooting bullets
         if (Input.GetMouseButtonDown(0))
         {
-            if (weaponNum == 4)
+            if (weaponNum == 4 && bladeTimer <= 0)
             {
                 //start knife animation
-                animKnife.SetTrigger("onClick");
+
+                animator.SetBool("hasBlade", true);
+
+                audioSource.PlayOneShot(bladeSwing);
+                bladeHitBox.SetActive(true);
+                bladeTimer = 0.5f;
             }
             else
             {
@@ -559,8 +574,6 @@ public class PlayerController : MonoBehaviour
 
         
 
-        //reset the variables for thrown weapon
-        knife.SetActive(false);
         spriteWeapon[weaponNum - 1].SetActive(false);
 
         //change to default weapon
