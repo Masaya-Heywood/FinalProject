@@ -610,4 +610,19 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void takeExplodeDamage() {
+        if (clearGame)
+            return;
+        audioSource.PlayOneShot(enemyAtackStound);
+        hitPointManager.takeDamage(0.2f);
+        float f = (this.transform.eulerAngles.z-90);
+
+        rb.AddForce(GetDirection(f)*enemyForce, ForceMode2D.Impulse);
+        rb.velocity = GetDirection(f) * enemyForce;
+
+        hitEnemyTimer = 0.3f;
+
+        Invoke("startParticle", 0.2f);
+    }
+
 }
