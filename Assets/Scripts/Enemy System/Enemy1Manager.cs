@@ -30,7 +30,7 @@ public class Enemy1Manager : MonoBehaviour
             enemyTimer -= Time.deltaTime;
             if (enemyTimer <= 0) {
                 anim.SetBool("isAttack", true);
-                enemyTimer = Random.Range(3.0f, 7.0f);
+                enemyTimer = Random.Range(2.0f, 5.0f);
                 animTimer = 1.0f;
             }
         }

@@ -56,13 +56,21 @@ public class fiendLogic : MonoBehaviour
             health -= collision.gameObject.GetComponent<BulletController>().bulletDamage;
             hpImage.fillAmount -= collision.gameObject.GetComponent<BulletController>().bulletDamage / totalHealth;
             Destroy(collision.gameObject);
-            Instantiate(particlePrefab, this.transform.position, Quaternion.identity);
+
+            Debug.Log(Mathf.Cos((collision.gameObject.transform.eulerAngles.z)));
+
+            var m = new Vector3(Mathf.Cos((collision.gameObject.transform.eulerAngles.z-90) * Mathf.Deg2Rad),
+                            Mathf.Sin((collision.gameObject.transform.eulerAngles.z-90)* Mathf.Deg2Rad),
+                            0);
+
+            Instantiate(particlePrefab, 0.6f* m + this.gameObject.transform.position, Quaternion.identity);
 
 
 
             //die if health is 0
             if (health == 0)
             {
+                Instantiate(((GameObject)Resources.Load("deadEnemy1")), this.transform.position,Quaternion.identity);
                 playerCharacter.GetComponent<PlayerController>().defeatEnemy();
                 Destroy(gameObject);
                 //player.health++;

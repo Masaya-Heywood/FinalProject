@@ -414,7 +414,7 @@ public class PlayerController : MonoBehaviour
 
             hitEnemyTimer = 0.3f;
             
-            Invoke("startParticle", 0.3f);
+            Invoke("startParticle", 0.2f);
         }
 
        
