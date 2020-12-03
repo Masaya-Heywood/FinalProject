@@ -7,8 +7,13 @@ public class EnemySpawner : MonoBehaviour
 
     public int maxEnemies = 2;
     public int currentEnemies = 0;
-    public GameObject player;
+    private GameObject player;
     public GameObject enemyType;
+
+    private void Start()
+    {
+        player = GameObject.Find("Player");
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
