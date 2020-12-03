@@ -20,6 +20,7 @@ TagManager:
   - enemy1
   - textDoor
   - blade
+  - bossEnemy
   layers:
   - Default
   - TransparentFX
