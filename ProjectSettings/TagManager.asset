@@ -21,6 +21,7 @@ TagManager:
   - textDoor
   - blade
   - bossEnemy
+  - object
   layers:
   - Default
   - TransparentFX

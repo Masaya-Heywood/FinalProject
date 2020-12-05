@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7844605340217910631}
   - component: {fileID: 7844605340217910630}
   m_Layer: 0
-  m_Name: first_spawner
+  m_Name: spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,7 +124,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxEnemies: 2
   currentEnemies: 0
-  player: {fileID: 0}
   enemyType: {fileID: 1569669033659582062, guid: 0628d6403f8e07845a3702ef5cef2ed9,
     type: 3}
-

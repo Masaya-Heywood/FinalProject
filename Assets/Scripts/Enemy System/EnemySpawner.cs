@@ -9,10 +9,16 @@ public class EnemySpawner : MonoBehaviour
     public int currentEnemies = 0;
     private GameObject player;
     public GameObject enemyType;
+    public GameObject visualInput;
+    private bool inputFilled = false;
 
     private void Start()
     {
         player = GameObject.Find("Player");
+        if (visualInput != null)
+        {
+            inputFilled = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -23,6 +29,17 @@ public class EnemySpawner : MonoBehaviour
             spawnedEnemy.GetComponent<Unit>().target = player.GetComponent<Transform>();
             spawnedEnemy.GetComponent<Unit>().mySpawner = gameObject;
             currentEnemies++;
+        }
+    }
+
+    /// <summary>
+    /// This isn't as needed anymore, but might be useful for adding an extra object that we want the spawner to be attached to
+    /// </summary>
+    private void Update()
+    {
+        if (visualInput == null && inputFilled == true)
+        {
+            Destroy(gameObject);
         }
     }
 }

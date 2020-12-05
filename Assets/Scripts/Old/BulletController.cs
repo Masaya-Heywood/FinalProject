@@ -43,12 +43,17 @@ public class BulletController : MonoBehaviour
         );
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
         if (this.gameObject.tag == "bulletNormal" && collision.gameObject.tag == "wall")
+        {
             Destroy(this.gameObject);
+        } else if (collision.gameObject.tag == "object") {
+            collision.gameObject.GetComponent<ObjectHealth>().health -= 1;
+            collision.gameObject.GetComponent<ObjectHealth>().tookDamage = true;
+            Destroy(this.gameObject);
+        }
     }
-
 
 }
 
