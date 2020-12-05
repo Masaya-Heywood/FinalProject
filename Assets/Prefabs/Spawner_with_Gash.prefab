@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5603380073150527639}
   - component: {fileID: 5603380073150527638}
   - component: {fileID: 5603380073150527637}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: spawner (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5603380073150527636}
   m_LocalRotation: {x: -0, y: -0, z: -0.7057395, w: 0.7084714}
-  m_LocalPosition: {x: -0.251377, y: 0.048990075, z: -0.65797836}
+  m_LocalPosition: {x: -0.251377, y: 0.048990075, z: -1}
   m_LocalScale: {x: 0.011011615, y: 0.021348488, z: 232985520}
   m_Children: []
   m_Father: {fileID: 5603380073718664200}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 5603380073718664203}
   - component: {fileID: 5603380073718664202}
   - component: {fileID: 5603380073718664201}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: enemy_spawner(gash)
   m_TagString: object
   m_Icon: {fileID: 0}

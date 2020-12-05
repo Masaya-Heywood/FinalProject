@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5050713160867838537}
   - component: {fileID: 5050713160867838536}
   - component: {fileID: 5050713160867838539}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: enemy_spawner(gash)
   m_TagString: object
   m_Icon: {fileID: 0}

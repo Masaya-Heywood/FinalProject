@@ -18,7 +18,7 @@ public class WindowManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isbreak && collision.gameObject.tag == "bulletNormal")
+        if (!isbreak && collision.gameObject.tag == "bulletNormal" || collision.gameObject.tag == "bulletPenetrate" || collision.gameObject.tag == "bulletBounce")
         {
             glassParticles.SetActive(true);
             isbreak = true;

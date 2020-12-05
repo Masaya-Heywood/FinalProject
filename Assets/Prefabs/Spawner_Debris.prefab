@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 6991303121211994024}
   - component: {fileID: 6991303121211994025}
   - component: {fileID: 6991303121211994026}
-  m_Layer: 0
-  m_Name: Spawner_Debrid
+  m_Layer: 11
+  m_Name: Spawner_Debris
   m_TagString: object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 6991303121501061414}
   - component: {fileID: 6991303121501061415}
   - component: {fileID: 6991303121501064920}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: spawner (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6991303121501064922}
   m_LocalRotation: {x: -0, y: -0, z: -0.7057395, w: 0.7084714}
-  m_LocalPosition: {x: -0.27797568, y: 0.058964446, z: -0.65797836}
+  m_LocalPosition: {x: -0.27797568, y: 0.058964446, z: -4}
   m_LocalScale: {x: 0.011011614, y: 0.021348488, z: 232985520}
   m_Children: []
   m_Father: {fileID: 6991303121211994027}

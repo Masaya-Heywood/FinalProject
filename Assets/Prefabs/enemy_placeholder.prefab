@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5017739718265780680}
   - component: {fileID: 7686605877992988567}
   - component: {fileID: 9011286880109576836}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: enemy_placeholder
   m_TagString: enemy1
   m_Icon: {fileID: 0}
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 6120510686002713342}
   - component: {fileID: 33121214189165062}
   - component: {fileID: 5260738695985444164}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HpEmpty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 982339779280123272}
   - component: {fileID: 5728449840409879228}
   - component: {fileID: 1363404398972912228}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 5726134159792960407}
   - component: {fileID: 6091650063842282373}
   - component: {fileID: 3623658144392290551}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HpFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
