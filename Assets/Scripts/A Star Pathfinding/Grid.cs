@@ -130,7 +130,7 @@ public class Grid : MonoBehaviour
 			// right
 			if (InBounds(centreY + radius, horizontalSearchY))
 			{
-				if (grid[centreX + radius, horizontalSearchY].walkable)
+				if (grid.GetLength(0) >= centreX + radius && grid[centreX + radius, horizontalSearchY].walkable)
 				{
 					return grid[centreX + radius, horizontalSearchY];
 				}

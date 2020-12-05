@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,12 +20,12 @@ public class PlayerController : MonoBehaviour
     // throw weapon prefab
     private ThrowWeaponController throwWeaponPrefab;
     // the speed of the bullet
-    public float shotSpeed; 
+    public float shotSpeed;
     //the angle for the bullet when you are shooting multiple
     //bullets at once
-    public float shotAngleRange; 
+    public float shotAngleRange;
     //timer for counting interval
-    private float shotTimer; 
+    private float shotTimer;
     //the number of bullets you can shoot at once
     public int shotCount;
     //the interval you can shoot the bullets
@@ -63,6 +63,9 @@ public class PlayerController : MonoBehaviour
 
     //the weapon which is currently used
     private int weaponNum = 1;
+
+    static int[] saveAmmoNum = new int[3] { 0, 0, 0 };
+    static bool[] saveHasWeapon = new bool[3] {false,false,false};
 
     //dialogue manager
     private DialogueManager dialogueManager;
@@ -104,10 +107,14 @@ public class PlayerController : MonoBehaviour
 
     private GameObject bladeHitBox;
 
+    public Vector3 spawnPoint;
+
+
     // Start is called before the first frame update
     void Start()
     {
 
+        this.transform.position = spawnPoint;
         bladeHitBox = GameObject.Find("BladeHitBox");
         bladeHitBox.SetActive(false);
 
@@ -136,8 +143,16 @@ public class PlayerController : MonoBehaviour
             highLight[i] = GameObject.Find("highLight" + (i + 1));
             if (i != 0)
             {
-                spriteWeapon[i].SetActive(false);
-                highLight[i].SetActive(false);
+                if (!saveHasWeapon[i - 1])
+                {
+                    spriteWeapon[i].SetActive(false);
+                    highLight[i].SetActive(false);
+                }
+                else
+                {
+                    hasWeapon[i] = true;
+
+                }
                 
             }
 
@@ -151,7 +166,16 @@ public class PlayerController : MonoBehaviour
             
         }
         for (int i = 0; i < 3; i++)
-            ammoWeapon[i+1].SetActive(false);
+        {
+            if(!saveHasWeapon[i])
+                ammoWeapon[i + 1].SetActive(false);
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            ammoNum[i] = saveAmmoNum[i];
+            ammoNumText[i].text = ammoNum[i].ToString();
+        }
 
     }
 
@@ -200,6 +224,9 @@ public class PlayerController : MonoBehaviour
         }
         //delete the code above after testing the dialogue system
 
+        if (Input.GetKeyDown(KeyCode.Alpha9)) {
+            SceneManager.LoadScene("LevelTwo");
+        }
 
         //changing weapons
         if (Input.GetKeyDown(KeyCode.Alpha2) && hasWeapon[0])
@@ -209,14 +236,16 @@ public class PlayerController : MonoBehaviour
             weaponNum = 1;
             eraseHighLight();
             audioSource.PlayOneShot(getWeapon);
+            animator.SetInteger("weaponNow", 1);
             highLight[weaponNum - 1].SetActive(true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3) && hasWeapon[1])
         {
 
             bulletPrefab = ((GameObject)Resources.Load("bulletPenetrate")).GetComponent<BulletController>();
-            throwWeaponPrefab = ((GameObject)Resources.Load("throwWeapon2")).GetComponent<ThrowWeaponController>();
+            throwWeaponPrefab = ((GameObject)Resources.Load("riflePickup")).GetComponent<ThrowWeaponController>();
 
+            animator.SetInteger("weaponNow", 2);
             weaponNum = 2;
             eraseHighLight();
             audioSource.PlayOneShot(getWeapon);
@@ -225,7 +254,7 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha4) && hasWeapon[2])
         {
             bulletPrefab = ((GameObject)Resources.Load("bulletBounce")).GetComponent<BulletController>();
-            throwWeaponPrefab = ((GameObject)Resources.Load("throwWeapon3")).GetComponent<ThrowWeaponController>();
+            throwWeaponPrefab = ((GameObject)Resources.Load("galeForcePickup")).GetComponent<ThrowWeaponController>();
 
             weaponNum = 3;
             eraseHighLight();
@@ -234,7 +263,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Alpha1) && hasWeapon[3])
         {
-            throwWeaponPrefab = ((GameObject)Resources.Load("throwWeapon4")).GetComponent<ThrowWeaponController>();
+            throwWeaponPrefab = ((GameObject)Resources.Load("knifePickup")).GetComponent<ThrowWeaponController>();
             weaponNum = 4;
             eraseHighLight();
             audioSource.PlayOneShot(getWeapon);
@@ -377,6 +406,7 @@ public class PlayerController : MonoBehaviour
                     ammoNum[weaponNum - 1] -= shotCount;
                     ammoNumText[weaponNum - 1].text = ammoNum[weaponNum - 1].ToString();
 
+                    saveAmmoNum[weaponNum - 1] = ammoNum[weaponNum - 1];
                     //reset the timer
                     shotTimer = 0;
 
@@ -457,6 +487,7 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             ammoWeapon[1].SetActive(true);
             audioSource.PlayOneShot(getWeapon);
+            saveHasWeapon[0] = true;
         }
         if (collision.tag == "itemWeapon3")
         {
@@ -465,6 +496,7 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             ammoWeapon[2].SetActive(true);
             audioSource.PlayOneShot(getWeapon);
+            saveHasWeapon[1] = true;
         }
         if (collision.tag == "itemWeapon4")
         {
@@ -473,6 +505,7 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             ammoWeapon[3].SetActive(true);
             audioSource.PlayOneShot(getWeapon);
+            saveHasWeapon[2] = true;
         }
 
         if (hasWeapon[0] && collision.tag == "ammo1") {
@@ -483,6 +516,7 @@ public class PlayerController : MonoBehaviour
             ammoNumText[0].text = ammoNum[0].ToString();
             audioSource.PlayOneShot(ammoSound);
             Destroy(collision.gameObject);
+            saveAmmoNum[0] = ammoNum[0];
 
         }
         if (hasWeapon[1] && collision.tag == "ammo2")
@@ -493,6 +527,7 @@ public class PlayerController : MonoBehaviour
             ammoNumText[1].text = ammoNum[1].ToString();
             audioSource.PlayOneShot(ammoSound);
             Destroy(collision.gameObject);
+            saveAmmoNum[1] = ammoNum[1];
         }
         if (hasWeapon[2] && collision.tag == "ammo3")
         {
@@ -502,6 +537,7 @@ public class PlayerController : MonoBehaviour
             ammoNumText[2].text = ammoNum[2].ToString();
             audioSource.PlayOneShot(ammoSound);
             Destroy(collision.gameObject);
+            saveAmmoNum[2] = ammoNum[2];
         }
     }
 
@@ -625,4 +661,5 @@ public class PlayerController : MonoBehaviour
         Invoke("startParticle", 0.2f);
     }
 
+    
 }

@@ -1,7 +1,37 @@
 fileFormatVersion: 2
 guid: a1db58a3d5804482cb14edc81fe82dc2
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 1843810517621459521
+    second: spr_MC_rifleShoot_0
+  - first:
+      213: 563880155773278098
+    second: spr_MC_rifleShoot_1
+  - first:
+      213: -7988322243049379938
+    second: spr_MC_rifleShoot_2
+  - first:
+      213: -8440523713385747703
+    second: spr_MC_rifleShoot_3
+  - first:
+      213: 693520047562889192
+    second: spr_MC_rifleShoot_4
+  - first:
+      213: 829262299107116887
+    second: spr_MC_rifleShoot_5
+  - first:
+      213: -6379619508055365098
+    second: spr_MC_rifleShoot_6
+  - first:
+      213: -6087544536014465848
+    second: spr_MC_rifleShoot_7
+  - first:
+      213: 3837173540025582391
+    second: spr_MC_rifleShoot_8
+  - first:
+      213: -4562950562072700468
+    second: spr_MC_rifleShoot_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,12 +71,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 1280
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -73,9 +103,243 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: spr_MC_rifleShoot_0
+      rect:
+        serializedVersion: 2
+        x: 2683
+        y: 187
+        width: 874
+        height: 1804
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14ac4f795e7869910800000000000000
+      internalID: 1843810517621459521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_rifleShoot_1
+      rect:
+        serializedVersion: 2
+        x: 4698
+        y: 152
+        width: 909
+        height: 1869
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29712cc930e43d700800000000000000
+      internalID: 563880155773278098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_rifleShoot_2
+      rect:
+        serializedVersion: 2
+        x: 6748
+        y: 1786
+        width: 139
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e97a0bf6e37c32190800000000000000
+      internalID: -7988322243049379938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_rifleShoot_3
+      rect:
+        serializedVersion: 2
+        x: 6778
+        y: 187
+        width: 874
+        height: 1804
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90ba169076c3dda80800000000000000
+      internalID: -8440523713385747703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_rifleShoot_4
+      rect:
+        serializedVersion: 2
+        x: 8793
+        y: 1786
+        width: 174
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e7199f0fc0ef9900800000000000000
+      internalID: 693520047562889192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_rifleShoot_5
+      rect:
+        serializedVersion: 2
+        x: 8858
+        y: 1881
+        width: 44
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75747ebdaa1228b00800000000000000
+      internalID: 829262299107116887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_rifleShoot_6
+      rect:
+        serializedVersion: 2
+        x: 9048
+        y: 1786
+        width: 144
+        height: 235
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61a253cabd90777a0800000000000000
+      internalID: -6379619508055365098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_rifleShoot_7
+      rect:
+        serializedVersion: 2
+        x: 9178
+        y: 1881
+        width: 234
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c4dc786f72b48ba0800000000000000
+      internalID: -6087544536014465848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_rifleShoot_8
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 187
+        width: 879
+        height: 1514
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 733c0c22101604530800000000000000
+      internalID: 3837173540025582391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_rifleShoot_9
+      rect:
+        serializedVersion: 2
+        x: 8828
+        y: 152
+        width: 874
+        height: 1709
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc9dcfba3a42da0c0800000000000000
+      internalID: -4562950562072700468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

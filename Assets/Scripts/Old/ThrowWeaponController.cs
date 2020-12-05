@@ -45,9 +45,9 @@ public class ThrowWeaponController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
         if (collision.gameObject.tag == "wall")
         {
-            col.isTrigger = true;
             rb.velocity = Vector2.zero;
         }
     }

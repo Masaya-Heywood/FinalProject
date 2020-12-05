@@ -9,6 +9,11 @@ public class hpManager : MonoBehaviour
     private Image hpImage;
     private float damage = 0;
     private float counter = 1;
+
+
+    public string levelName;
+
+
     private void Start()
     {
         hpImage = this.GetComponent<Image>();
@@ -23,7 +28,7 @@ public class hpManager : MonoBehaviour
             if (hpImage.fillAmount > 0)
                 hpImage.fillAmount -= Time.deltaTime;
             else 
-                SceneManager.LoadScene("LevelOne");
+                SceneManager.LoadScene(levelName);
         }
 
         

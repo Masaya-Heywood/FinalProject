@@ -55,7 +55,9 @@ public class fiendLogic : MonoBehaviour
             audioSource.PlayOneShot(hitSound);
             health -= collision.gameObject.GetComponent<BulletController>().bulletDamage;
             hpImage.fillAmount -= collision.gameObject.GetComponent<BulletController>().bulletDamage / totalHealth;
-            Destroy(collision.gameObject);
+
+            if(collision.gameObject.CompareTag("bulletNormal"))
+                Destroy(collision.gameObject);
 
             Debug.Log(Mathf.Cos((collision.gameObject.transform.eulerAngles.z)));
 
@@ -99,10 +101,39 @@ public class fiendLogic : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("bulletBounce"))
         {
-
             audioSource.PlayOneShot(hitSound);
             health -= collision.gameObject.GetComponent<BulletController>().bulletDamage;
+            hpImage.fillAmount -= collision.gameObject.GetComponent<BulletController>().bulletDamage / totalHealth;
             Destroy(collision.gameObject);
+
+            Debug.Log(Mathf.Cos((collision.gameObject.transform.eulerAngles.z)));
+
+            var m = new Vector3(Mathf.Cos((collision.gameObject.transform.eulerAngles.z - 90) * Mathf.Deg2Rad),
+                            Mathf.Sin((collision.gameObject.transform.eulerAngles.z - 90) * Mathf.Deg2Rad),
+                            0);
+
+            Instantiate(particlePrefab, 0.6f * m + this.gameObject.transform.position, Quaternion.identity);
+
+
+
+            //die if health is 0
+            if (health == 0)
+            {
+                Instantiate(((GameObject)Resources.Load("deadEnemy1")), this.transform.position, Quaternion.identity);
+                playerCharacter.GetComponent<PlayerController>().defeatEnemy();
+                Destroy(gameObject);
+                //player.health++;
+            }
+        }
+
+        if (collision.gameObject.CompareTag("blade"))
+        {
+            audioSource.PlayOneShot(hitSound);
+            health -= 1;
+            hpImage.fillAmount -= 1 / totalHealth;
+            Instantiate(particlePrefab, this.transform.position, Quaternion.identity);
+
+
 
             //die if health is 0
             if (health == 0)
@@ -111,11 +142,6 @@ public class fiendLogic : MonoBehaviour
                 Destroy(gameObject);
                 //player.health++;
             }
-        }
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            //collision.gameObject.GetComponent<PlayerController>().health--;
-            //print(collision.gameObject.GetComponent<PlayerController>().health);
         }
     }
 }

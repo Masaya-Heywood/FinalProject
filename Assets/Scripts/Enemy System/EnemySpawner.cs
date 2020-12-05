@@ -11,10 +11,14 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyType;
     public GameObject visualInput;
     private bool inputFilled = false;
+    private int maxEnemyInScreen = 15;
+
+    private EnemyNumManager enemyNumManager;
 
     private void Start()
     {
         player = GameObject.Find("Player");
+        enemyNumManager = GameObject.Find("EnemyNumManager").GetComponent<EnemyNumManager>();
         if (visualInput != null)
         {
             inputFilled = true;
@@ -23,12 +27,13 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (currentEnemies < maxEnemies && collision.gameObject == player)
+        if (enemyNumManager.getEnemyNum() <= maxEnemyInScreen && currentEnemies < maxEnemies && collision.gameObject == player)
         {
             var spawnedEnemy = Instantiate(enemyType, transform.position, transform.rotation);
             spawnedEnemy.GetComponent<Unit>().target = player.GetComponent<Transform>();
             spawnedEnemy.GetComponent<Unit>().mySpawner = gameObject;
             currentEnemies++;
+            enemyNumManager.increaseEnemyNum();
         }
     }
 
