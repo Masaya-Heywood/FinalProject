@@ -5,9 +5,10 @@ using UnityEngine;
 public class ObjectRotation : MonoBehaviour
 {
     float rotateTime = 0;
-    float changeSpeed = .01f;
+    float changeSpeed = .25f;
     int rotateAmount = 40;
-    //float scaleAmount = something;
+    float scaleAmount = 0.9f;
+    
 
     private void Update()
     {
@@ -22,16 +23,16 @@ public class ObjectRotation : MonoBehaviour
 
 
 
-            //Portion of script for Cassie to write. These lines of code should scale the object up and down continuously.
-            //if (game object scale > a certainAmount)
-            //{
-            //    game object scale -= new Vector3(something, something, something)
-            //} else if (game object scale  < a certainAmount)
-            //{
-            //    game object scale += new Vector3(something, something, something);
-            //}
+            //written by cassie
+            //scale the object up and down continuously.
+            if(gameObject.transform.localScale.x > scaleAmount)
+            {
+                gameObject.transform.localScale -= new Vector3(scaleAmount, scaleAmount, 0);
+            }else if(gameObject.transform.localScale.x < scaleAmount)
+                {
+                gameObject.transform.localScale += new Vector3(scaleAmount, scaleAmount, 0);
+                }
             rotateTime = 0;
         }
-
     }
 }
