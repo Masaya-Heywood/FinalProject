@@ -107,6 +107,8 @@ public class PlayerController : MonoBehaviour
 
     private GameObject bladeHitBox;
 
+    public string nextScene;
+
     public Vector3 spawnPoint;
 
 
@@ -459,12 +461,12 @@ public class PlayerController : MonoBehaviour
             //Debug for text system
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (defeatEnemyCount >= 5) {
-                    clearCanvas.SetActive(true);
-                    talkDoor = true;
-                    audioSource.PlayOneShot(openDoor);
-                    clearGame = true;
-                }
+                SceneManager.LoadScene(nextScene);
+                clearCanvas.SetActive(true);
+                talkDoor = true;
+                audioSource.PlayOneShot(openDoor);
+                clearGame = true;
+
                 //display dialogue
                 if (!talkDoor)
                 {

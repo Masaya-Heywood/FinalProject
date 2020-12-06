@@ -3711,6 +3711,7 @@ MonoBehaviour:
   openDoor: {fileID: 8300000, guid: 36b3f036f162e014dab1c468af29cef9, type: 3}
   bladeSwing: {fileID: 8300000, guid: 9d9cfe7e352862a4383dec4de622b46c, type: 3}
   clearCanvas: {fileID: 1532816885}
+  nextScene: LevelTwo
   spawnPoint: {x: -17, y: -3, z: 0}
 --- !u!212 &130031013
 SpriteRenderer:
