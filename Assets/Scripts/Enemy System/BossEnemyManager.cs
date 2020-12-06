@@ -23,14 +23,25 @@ public class BossEnemyManager : MonoBehaviour
     private GameObject playerCharacter;
 
     public AudioClip hitSound;
+    public AudioClip shakeSound;
+
     private AudioSource audioSource;
 
     private GameObject particlePrefab;
 
     public Image hpImage;
 
+    private float endTimer = -1;
+    private Animator anim;
+    public GameObject hpBar;
+    private bool endFlag = false;
+    private bool startEnd = false;
+    private bool startDeath = false;
+    public GameObject[] destroyObjects;
+    public GameObject mainCamera;
     private void Start()
     {
+        anim = this.GetComponent<Animator>();
         player = GameObject.Find("Player");
         var spawnedEnemy = Instantiate(enemyType, transform.position, transform.rotation);
         spawnedEnemy.GetComponent<Unit>().target = player.GetComponent<Transform>();
@@ -49,6 +60,30 @@ public class BossEnemyManager : MonoBehaviour
 
     private void Update()
     {
+        if (endFlag)
+            return;
+        if (endTimer > 0)
+        {
+            endTimer -= Time.deltaTime;
+            if (endTimer <= 2.1f && !startDeath)
+            {
+                startDeath = true;
+                anim.SetBool("death", true);
+                audioSource.Stop();
+                audioSource.PlayOneShot(hitSound);
+            }
+
+            if (endTimer <= 0)
+            {
+                
+                
+                endFlag = true;
+                anim.SetBool("death", false);
+                Destroy(this.gameObject);
+            }
+            
+            return;
+        }
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
@@ -58,8 +93,27 @@ public class BossEnemyManager : MonoBehaviour
             spawnedEnemy.GetComponent<Unit>().mySpawner = null;
 
         }
-        if (health <= 0) {
-            SceneManager.LoadScene("EndScene");
+        if (health <= 0 && !startEnd)
+        {
+            startEnd = true;
+            //SceneManager.LoadScene("EndScene");
+            
+            endTimer = 6.1f;
+            playerCharacter.GetComponent<PlayerController>().defeatBoss();
+            
+            hpBar.SetActive(false);
+            audioSource.PlayOneShot(shakeSound);
+            mainCamera.GetComponent<CameraManager>().endShake();
+
+            for (int i = 0; i < destroyObjects.Length; i++)
+            {
+                Destroy(destroyObjects[i]);
+            }
+            GameObject[] objects1 = GameObject.FindGameObjectsWithTag("enemy1");
+            for (int i = 0; i < objects1.Length; i++)
+            {
+                objects1[i].SetActive(false);
+            }
         }
     }
 
@@ -70,9 +124,10 @@ public class BossEnemyManager : MonoBehaviour
             //audioSource.PlayOneShot(hitSound);
             health -= collision.gameObject.GetComponent<BulletController>().bulletDamage;
             hpImage.fillAmount -= collision.gameObject.GetComponent<BulletController>().bulletDamage / totalHealth;
-            Destroy(collision.gameObject);
 
-            Debug.Log(Mathf.Cos((collision.gameObject.transform.eulerAngles.z)));
+
+            if (collision.gameObject.CompareTag("bulletNormal"))
+                Destroy(collision.gameObject);
 
             var m = new Vector3(Mathf.Cos((collision.gameObject.transform.eulerAngles.z - 90) * Mathf.Deg2Rad),
                             Mathf.Sin((collision.gameObject.transform.eulerAngles.z - 90) * Mathf.Deg2Rad),
@@ -87,7 +142,7 @@ public class BossEnemyManager : MonoBehaviour
             {
                 Instantiate(((GameObject)Resources.Load("deadEnemy1")), this.transform.position, Quaternion.identity);
                 playerCharacter.GetComponent<PlayerController>().defeatEnemy();
-                Destroy(gameObject);
+                //Destroy(gameObject);
                 //player.health++;
             }
         }
@@ -100,38 +155,29 @@ public class BossEnemyManager : MonoBehaviour
             Instantiate(particlePrefab, this.transform.position, Quaternion.identity);
 
 
+        }
 
-            //die if health is 0
-            if (health == 0)
-            {
-                playerCharacter.GetComponent<PlayerController>().defeatEnemy();
-                Destroy(gameObject);
-                //player.health++;
-            }
+        if (collision.gameObject.CompareTag("bulletBounce"))
+        {
+            //audioSource.PlayOneShot(hitSound);
+            health -= collision.gameObject.GetComponent<BulletController>().bulletDamage;
+            hpImage.fillAmount -= collision.gameObject.GetComponent<BulletController>().bulletDamage / totalHealth;
+
+            Destroy(collision.gameObject);
+            var m = new Vector3(Mathf.Cos((collision.gameObject.transform.eulerAngles.z - 90) * Mathf.Deg2Rad),
+                            Mathf.Sin((collision.gameObject.transform.eulerAngles.z - 90) * Mathf.Deg2Rad),
+                            0);
+
+            Instantiate(particlePrefab, 0.6f * m + this.gameObject.transform.position, Quaternion.identity);
+
+
+
+
         }
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("bulletBounce"))
-        {
+        
 
-            audioSource.PlayOneShot(hitSound);
-            health -= collision.gameObject.GetComponent<BulletController>().bulletDamage;
-            Destroy(collision.gameObject);
-
-            //die if health is 0
-            if (health == 0)
-            {
-                playerCharacter.GetComponent<PlayerController>().defeatEnemy();
-                Destroy(gameObject);
-                //player.health++;
-            }
-        }
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            //collision.gameObject.GetComponent<PlayerController>().health--;
-            //print(collision.gameObject.GetComponent<PlayerController>().health);
-        }
     }
-
 }

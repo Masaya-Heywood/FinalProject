@@ -16,11 +16,28 @@ public class CameraManager : MonoBehaviour
     //how much the mouse movement affects the Camera
     public float moveByMouse = 0.1f;
 
+    private float shakeTimer = 0f;
+    private float shakeDist = 1.3f;
+    private float shakeSpan = 0.08f;
     private void Start()
     {
         player = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
+    private void Update()
+    {
+        if (shakeTimer > 0) {
+            shakeSpan -= Time.deltaTime;
+            if (shakeSpan < 0) {
+                this.transform.position += new Vector3(shakeDist, 0, 0);
+                shakeDist *= -1;
+                shakeSpan = 0.08f;
+            }
+
+            shakeTimer -= Time.deltaTime;
+            
+        }
+    }
     private void FixedUpdate()
     {
         if (!target) return;
@@ -34,5 +51,9 @@ public class CameraManager : MonoBehaviour
         var mouseAng = new Vector3(Mathf.Cos(Mathf.Deg2Rad*player.getMouseAngle()), Mathf.Sin(Mathf.Deg2Rad * player.getMouseAngle()),0);
         mouseAng *= moveByMouse;
         transform.position = Vector3.SmoothDamp(selfPosition + mouseAng, destination + initialPos + mouseAng, ref velocity, dampTime);
+    }
+
+    public void endShake() {
+        shakeTimer = 4.0f;
     }
 }

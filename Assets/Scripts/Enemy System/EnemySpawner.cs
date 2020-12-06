@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyType;
     public GameObject visualInput;
     private bool inputFilled = false;
-    private int maxEnemyInScreen = 15;
+    private int maxEnemyInScreen = 8;
 
     private EnemyNumManager enemyNumManager;
 

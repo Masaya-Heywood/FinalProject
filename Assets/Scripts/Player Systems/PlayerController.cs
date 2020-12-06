@@ -99,7 +99,6 @@ public class PlayerController : MonoBehaviour
 
     private Text enemyCountText;
 
-    private bool talkDoor = false;
 
     private bool clearGame = false;
 
@@ -109,6 +108,7 @@ public class PlayerController : MonoBehaviour
 
     public string nextScene;
 
+    private bool bossDead = false;
     public Vector3 spawnPoint;
 
 
@@ -259,6 +259,8 @@ public class PlayerController : MonoBehaviour
             bulletPrefab = ((GameObject)Resources.Load("bulletBounce")).GetComponent<BulletController>();
             throwWeaponPrefab = ((GameObject)Resources.Load("galeForcePickup")).GetComponent<ThrowWeaponController>();
 
+
+            animator.SetInteger("weaponNow", 3);
             weaponNum = 3;
             eraseHighLight();
             audioSource.PlayOneShot(getWeapon);
@@ -465,7 +467,6 @@ public class PlayerController : MonoBehaviour
             {
                 SceneManager.LoadScene(nextScene);
                 clearCanvas.SetActive(true);
-                talkDoor = true;
                 //audioSource.PlayOneShot(openDoor);
                 clearGame = true;
 
@@ -477,6 +478,15 @@ public class PlayerController : MonoBehaviour
                     GameObject.Find("DialogueBox").GetComponent<RectTransform>().localPosition = new Vector3(-16, -178, 0);
                     talkDoor = true;
                 }*/
+
+
+            }
+        }
+
+        if (collision.gameObject.tag == "endDoor") {
+            if (Input.GetKeyDown(KeyCode.Space) && bossDead)
+            {
+                SceneManager.LoadScene(nextScene);
 
 
             }
@@ -651,6 +661,9 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void defeatBoss() {
+        bossDead = true;
+    }
     public void takeExplodeDamage() {
         if (clearGame)
             return;

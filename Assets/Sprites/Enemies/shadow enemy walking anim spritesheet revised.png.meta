@@ -1,12 +1,36 @@
 fileFormatVersion: 2
 guid: df71e4f4b8cb28243aa586b8e55ed6bb
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -3652391302508702022
+    second: shadow enemy walking anim spritesheet revised_0
+  - first:
+      213: -2001754975327592803
+    second: shadow enemy walking anim spritesheet revised_1
+  - first:
+      213: -8657515660307375711
+    second: shadow enemy walking anim spritesheet revised_2
+  - first:
+      213: -5881963549039515916
+    second: shadow enemy walking anim spritesheet revised_3
+  - first:
+      213: -6176858630678700897
+    second: shadow enemy walking anim spritesheet revised_4
+  - first:
+      213: 5539218773712465058
+    second: shadow enemy walking anim spritesheet revised_5
+  - first:
+      213: 655349884482973384
+    second: shadow enemy walking anim spritesheet revised_6
+  - first:
+      213: 1388870351387298057
+    second: shadow enemy walking anim spritesheet revised_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -35,25 +59,25 @@ TextureImporter:
     filterMode: -1
     aniso: -1
     mipBias: -100
-    wrapU: -1
-    wrapV: -1
+    wrapU: 1
+    wrapV: 1
     wrapW: -1
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
-  textureShape: 2
+  textureType: 8
+  textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
@@ -111,11 +135,179 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: shadow enemy walking anim spritesheet revised_0
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 12
+        width: 95
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab61e392679105dc0800000000000000
+      internalID: -3652391302508702022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow enemy walking anim spritesheet revised_1
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 6
+        width: 96
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9e5a38a4765834e0800000000000000
+      internalID: -2001754975327592803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow enemy walking anim spritesheet revised_2
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 5
+        width: 96
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a95ffd50635ad780800000000000000
+      internalID: -8657515660307375711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow enemy walking anim spritesheet revised_3
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 4
+        width: 97
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f624bde0511f5ea0800000000000000
+      internalID: -5881963549039515916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow enemy walking anim spritesheet revised_4
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 12
+        width: 94
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9c17924dc3674aa0800000000000000
+      internalID: -6176858630678700897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow enemy walking anim spritesheet revised_5
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 9
+        width: 96
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ac6e4c60224fdc40800000000000000
+      internalID: 5539218773712465058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow enemy walking anim spritesheet revised_6
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 6
+        width: 96
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ce633c6f35481900800000000000000
+      internalID: 655349884482973384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow enemy walking anim spritesheet revised_7
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 4
+        width: 94
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 909038dd932464310800000000000000
+      internalID: 1388870351387298057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7124b2418372a644eaf4e8c40b932285
     internalID: 0
     vertices: []
     indices: 

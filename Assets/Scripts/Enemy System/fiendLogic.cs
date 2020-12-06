@@ -21,7 +21,9 @@ public class fiendLogic : MonoBehaviour
     private GameObject particlePrefab;
 
     public Image hpImage;
+    private EnemyNumManager enemyNumManager;
 
+    public int enemyNum = 1;
     private void Start()
     {
         totalHealth = health;
@@ -30,6 +32,7 @@ public class fiendLogic : MonoBehaviour
         unitCalcs = gameObject.GetComponent<Unit>();
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         playerCharacter = GameObject.Find("Player");
+        enemyNumManager = GameObject.Find("EnemyNumManager").GetComponent<EnemyNumManager>();
         player = playerCharacter.GetComponent<PlayerController>();
 
     }
@@ -59,7 +62,6 @@ public class fiendLogic : MonoBehaviour
             if(collision.gameObject.CompareTag("bulletNormal"))
                 Destroy(collision.gameObject);
 
-            Debug.Log(Mathf.Cos((collision.gameObject.transform.eulerAngles.z)));
 
             var m = new Vector3(Mathf.Cos((collision.gameObject.transform.eulerAngles.z-90) * Mathf.Deg2Rad),
                             Mathf.Sin((collision.gameObject.transform.eulerAngles.z-90)* Mathf.Deg2Rad),
@@ -72,8 +74,11 @@ public class fiendLogic : MonoBehaviour
             //die if health is 0
             if (health == 0)
             {
-                Instantiate(((GameObject)Resources.Load("deadEnemy1")), this.transform.position,Quaternion.identity);
+                if(enemyNum == 1)
+                    Instantiate(((GameObject)Resources.Load("Enemy1Dead")), this.transform.position, Quaternion.identity);
+                
                 playerCharacter.GetComponent<PlayerController>().defeatEnemy();
+                enemyNumManager.decreaseEnemyNum();
                 Destroy(gameObject);
                 //player.health++;
             }
@@ -91,8 +96,16 @@ public class fiendLogic : MonoBehaviour
             //die if health is 0
             if (health == 0)
             {
+
+                if (enemyNum == 1)
+                    Instantiate(((GameObject)Resources.Load("Enemy1Dead")), this.transform.position, Quaternion.identity);
+
+
                 playerCharacter.GetComponent<PlayerController>().defeatEnemy();
+                enemyNumManager.decreaseEnemyNum();
                 Destroy(gameObject);
+
+
                 //player.health++;
             }
         }
@@ -118,8 +131,13 @@ public class fiendLogic : MonoBehaviour
             //die if health is 0
             if (health == 0)
             {
-                Instantiate(((GameObject)Resources.Load("deadEnemy1")), this.transform.position, Quaternion.identity);
+                if(enemyNum == 1)
+                    Instantiate(((GameObject)Resources.Load("Enemy1Dead")), this.transform.position, Quaternion.identity);
+                
+
                 playerCharacter.GetComponent<PlayerController>().defeatEnemy();
+                enemyNumManager.decreaseEnemyNum();
+
                 Destroy(gameObject);
                 //player.health++;
             }
@@ -138,6 +156,7 @@ public class fiendLogic : MonoBehaviour
             if (health == 0)
             {
                 playerCharacter.GetComponent<PlayerController>().defeatEnemy();
+                enemyNumManager.decreaseEnemyNum();
                 Destroy(gameObject);
                 //player.health++;
             }

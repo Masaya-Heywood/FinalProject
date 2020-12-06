@@ -26,4 +26,9 @@ public class EnemyNumManager : MonoBehaviour
     public void increaseEnemyNum() {
         enemyNum++;
     }
+
+    public void decreaseEnemyNum()
+    {
+        enemyNum--;
+    }
 }

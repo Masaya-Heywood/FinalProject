@@ -51,7 +51,9 @@ public class BulletController : MonoBehaviour
         } else if (collision.gameObject.tag == "object") {
             collision.gameObject.GetComponent<ObjectHealth>().health -= 1;
             collision.gameObject.GetComponent<ObjectHealth>().tookDamage = true;
-            Destroy(this.gameObject);
+
+            if(this.gameObject.tag == "bulletNormal")
+                Destroy(this.gameObject);
         }
     }
 

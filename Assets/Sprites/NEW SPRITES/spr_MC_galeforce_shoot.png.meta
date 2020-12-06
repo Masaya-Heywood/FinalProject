@@ -1,7 +1,124 @@
 fileFormatVersion: 2
 guid: 5401f31a5744c42b6b78d9ca50d2cd5a
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -1687200782906200286
+    second: spr_MC_galeforce_shoot_0
+  - first:
+      213: 6955343265907490601
+    second: spr_MC_galeforce_shoot_1
+  - first:
+      213: 4014027088312790203
+    second: spr_MC_galeforce_shoot_2
+  - first:
+      213: 6121449552169574299
+    second: spr_MC_galeforce_shoot_3
+  - first:
+      213: -9150773679523129148
+    second: spr_MC_galeforce_shoot_4
+  - first:
+      213: 2695441473723176204
+    second: spr_MC_galeforce_shoot_5
+  - first:
+      213: -1478381468177547496
+    second: spr_MC_galeforce_shoot_6
+  - first:
+      213: -7018996985256949763
+    second: spr_MC_galeforce_shoot_7
+  - first:
+      213: -790478350704479385
+    second: spr_MC_galeforce_shoot_8
+  - first:
+      213: 9019388221513622380
+    second: spr_MC_galeforce_shoot_9
+  - first:
+      213: 5191226927768226221
+    second: spr_MC_galeforce_shoot_10
+  - first:
+      213: -6274597215960249572
+    second: spr_MC_galeforce_shoot_11
+  - first:
+      213: -2914974045750999792
+    second: spr_MC_galeforce_shoot_12
+  - first:
+      213: 8483028675606811623
+    second: spr_MC_galeforce_shoot_13
+  - first:
+      213: 4387113161152061511
+    second: spr_MC_galeforce_shoot_14
+  - first:
+      213: -4608886187103289093
+    second: spr_MC_galeforce_shoot_15
+  - first:
+      213: 1879801774732478998
+    second: spr_MC_galeforce_shoot_16
+  - first:
+      213: 3662921095753076027
+    second: spr_MC_galeforce_shoot_17
+  - first:
+      213: -5932921591829187057
+    second: spr_MC_galeforce_shoot_18
+  - first:
+      213: -8581035483193464218
+    second: spr_MC_galeforce_shoot_19
+  - first:
+      213: -6288140156329980034
+    second: spr_MC_galeforce_shoot_20
+  - first:
+      213: 5752485171304257451
+    second: spr_MC_galeforce_shoot_21
+  - first:
+      213: 7664599798245579241
+    second: spr_MC_galeforce_shoot_22
+  - first:
+      213: -15055597084428129
+    second: spr_MC_galeforce_shoot_23
+  - first:
+      213: -3009344646583334973
+    second: spr_MC_galeforce_shoot_24
+  - first:
+      213: -5226801510581661685
+    second: spr_MC_galeforce_shoot_25
+  - first:
+      213: 3273019622929288773
+    second: spr_MC_galeforce_shoot_26
+  - first:
+      213: -7036127682405063002
+    second: spr_MC_galeforce_shoot_27
+  - first:
+      213: -8265051789912988102
+    second: spr_MC_galeforce_shoot_28
+  - first:
+      213: 461690574092944758
+    second: spr_MC_galeforce_shoot_29
+  - first:
+      213: 5520600530021539468
+    second: spr_MC_galeforce_shoot_30
+  - first:
+      213: 4160846425197559113
+    second: spr_MC_galeforce_shoot_31
+  - first:
+      213: -6657189184604551153
+    second: spr_MC_galeforce_shoot_32
+  - first:
+      213: -1572409260790487563
+    second: spr_MC_galeforce_shoot_33
+  - first:
+      213: -7453032020662288898
+    second: spr_MC_galeforce_shoot_34
+  - first:
+      213: 2503423736521965887
+    second: spr_MC_galeforce_shoot_35
+  - first:
+      213: -1981462665711375870
+    second: spr_MC_galeforce_shoot_36
+  - first:
+      213: 2933699148210372485
+    second: spr_MC_galeforce_shoot_37
+  - first:
+      213: -4127022396899258385
+    second: spr_MC_galeforce_shoot_38
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,12 +158,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 1280
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -73,9 +190,852 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_0
+      rect:
+        serializedVersion: 2
+        x: 2581
+        y: 136
+        width: 1041
+        height: 1907
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22f6d1eb3dbd598e0800000000000000
+      internalID: -1687200782906200286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_1
+      rect:
+        serializedVersion: 2
+        x: 5079
+        y: 1961
+        width: 111
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92f325f69d7568060800000000000000
+      internalID: 6955343265907490601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_2
+      rect:
+        serializedVersion: 2
+        x: 6486
+        y: 1940
+        width: 117
+        height: 83
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbcedad9e50b4b730800000000000000
+      internalID: 4014027088312790203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_3
+      rect:
+        serializedVersion: 2
+        x: 8537
+        y: 2010
+        width: 48
+        height: 38
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9f9a835fe1c3f450800000000000000
+      internalID: 6121449552169574299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_4
+      rect:
+        serializedVersion: 2
+        x: 9909
+        y: 1912
+        width: 118
+        height: 111
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c8970442dbe10180800000000000000
+      internalID: -9150773679523129148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_5
+      rect:
+        serializedVersion: 2
+        x: 4505
+        y: 1863
+        width: 111
+        height: 112
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0510224db1286520800000000000000
+      internalID: 2695441473723176204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_6
+      rect:
+        serializedVersion: 2
+        x: 4424
+        y: 136
+        width: 1388
+        height: 1873
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81fb1c233ebbb7be0800000000000000
+      internalID: -1478381468177547496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_7
+      rect:
+        serializedVersion: 2
+        x: 5590
+        y: 1898
+        width: 181
+        height: 111
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df7c83e1e63879e90800000000000000
+      internalID: -7018996985256949763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_8
+      rect:
+        serializedVersion: 2
+        x: 6549
+        y: 1751
+        width: 531
+        height: 180
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7637f9fc028a705f0800000000000000
+      internalID: -790478350704479385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_9
+      rect:
+        serializedVersion: 2
+        x: 7417
+        y: 1464
+        width: 530
+        height: 467
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6369aafccd4b2d70800000000000000
+      internalID: 9019388221513622380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_10
+      rect:
+        serializedVersion: 2
+        x: 8376
+        y: 1716
+        width: 209
+        height: 215
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da94112f261fa0840800000000000000
+      internalID: 5191226927768226221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_11
+      rect:
+        serializedVersion: 2
+        x: 9559
+        y: 1590
+        width: 496
+        height: 371
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1bc80a83172ce8a0800000000000000
+      internalID: -6274597215960249572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_12
+      rect:
+        serializedVersion: 2
+        x: 11736
+        y: 1849
+        width: 83
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0154781bc8eeb87d0800000000000000
+      internalID: -2914974045750999792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_13
+      rect:
+        serializedVersion: 2
+        x: 11897
+        y: 1849
+        width: 82
+        height: 82
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e31ffca2a5c9b570800000000000000
+      internalID: 8483028675606811623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_14
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 150
+        width: 1042
+        height: 1713
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 740e8e71d2822ec30800000000000000
+      internalID: 4387113161152061511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_15
+      rect:
+        serializedVersion: 2
+        x: 4442
+        y: 1639
+        width: 300
+        height: 210
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf001878e62f900c0800000000000000
+      internalID: -4608886187103289093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_16
+      rect:
+        serializedVersion: 2
+        x: 6389
+        y: 1527
+        width: 502
+        height: 371
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61a041721c5661a10800000000000000
+      internalID: 1879801774732478998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_17
+      rect:
+        serializedVersion: 2
+        x: 10518
+        y: 1814
+        width: 48
+        height: 49
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3d85a0645f45d230800000000000000
+      internalID: 3662921095753076027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_18
+      rect:
+        serializedVersion: 2
+        x: 12023
+        y: 1716
+        width: 83
+        height: 119
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f06b6c60f370aada0800000000000000
+      internalID: -5932921591829187057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_19
+      rect:
+        serializedVersion: 2
+        x: 5464
+        y: 1605
+        width: 272
+        height: 181
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66a2b3b31b90ae880800000000000000
+      internalID: -8581035483193464218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_20
+      rect:
+        serializedVersion: 2
+        x: 6969
+        y: 1688
+        width: 82
+        height: 49
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7f051408d90cb8a0800000000000000
+      internalID: -6288140156329980034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_21
+      rect:
+        serializedVersion: 2
+        x: 7319
+        y: 1688
+        width: 83
+        height: 84
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba7da4b09cee4df40800000000000000
+      internalID: 5752485171304257451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_22
+      rect:
+        serializedVersion: 2
+        x: 8054
+        y: 1653
+        width: 117
+        height: 119
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e955ff58e02e5a60800000000000000
+      internalID: 7664599798245579241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_23
+      rect:
+        serializedVersion: 2
+        x: 8405
+        y: 1430
+        width: 530
+        height: 342
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f98b6e3a3038acff0800000000000000
+      internalID: -15055597084428129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_24
+      rect:
+        serializedVersion: 2
+        x: 9370
+        y: 1716
+        width: 76
+        height: 84
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c74da5fcf8ac36d0800000000000000
+      internalID: -3009344646583334973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_25
+      rect:
+        serializedVersion: 2
+        x: 10105
+        y: 1716
+        width: 48
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b001e4a08bba677b0800000000000000
+      internalID: -5226801510581661685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_26
+      rect:
+        serializedVersion: 2
+        x: 10553
+        y: 1688
+        width: 82
+        height: 84
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54e459f710a1c6d20800000000000000
+      internalID: 3273019622929288773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_27
+      rect:
+        serializedVersion: 2
+        x: 10742
+        y: 1688
+        width: 48
+        height: 49
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a624ffd627aa5e90800000000000000
+      internalID: -7036127682405063002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_28
+      rect:
+        serializedVersion: 2
+        x: 6400
+        y: 150
+        width: 1584
+        height: 1874
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a36a70cef23ac4d80800000000000000
+      internalID: -8265051789912988102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_29
+      rect:
+        serializedVersion: 2
+        x: 8392
+        y: 60
+        width: 1715
+        height: 1964
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 675c4f88121486600800000000000000
+      internalID: 461690574092944758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_30
+      rect:
+        serializedVersion: 2
+        x: 9749
+        y: 1559
+        width: 117
+        height: 115
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8e54c2ceec1d9c40800000000000000
+      internalID: 5520600530021539468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_31
+      rect:
+        serializedVersion: 2
+        x: 10455
+        y: 1527
+        width: 111
+        height: 84
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94dbad257cb4eb930800000000000000
+      internalID: 4160846425197559113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_32
+      rect:
+        serializedVersion: 2
+        x: 10616
+        y: 1559
+        width: 111
+        height: 115
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f08c21935b9ec93a0800000000000000
+      internalID: -6657189184604551153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_33
+      rect:
+        serializedVersion: 2
+        x: 10492
+        y: 117
+        width: 1637
+        height: 1875
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f56c09bb1ead2ae0800000000000000
+      internalID: -1572409260790487563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_34
+      rect:
+        serializedVersion: 2
+        x: 11960
+        y: 1559
+        width: 83
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efdffc47dd2819890800000000000000
+      internalID: -7453032020662288898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_35
+      rect:
+        serializedVersion: 2
+        x: 12821
+        y: 150
+        width: 1042
+        height: 1524
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f314ca9ef92fdb220800000000000000
+      internalID: 2503423736521965887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_36
+      rect:
+        serializedVersion: 2
+        x: 9749
+        y: 1493
+        width: 54
+        height: 55
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20a239a243e6084e0800000000000000
+      internalID: -1981462665711375870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_37
+      rect:
+        serializedVersion: 2
+        x: 10553
+        y: 1401
+        width: 111
+        height: 77
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58ff1f6f4d796b820800000000000000
+      internalID: 2933699148210372485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_MC_galeforce_shoot_38
+      rect:
+        serializedVersion: 2
+        x: 10679
+        y: 1401
+        width: 111
+        height: 77
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fef0db4fefed9b6c0800000000000000
+      internalID: -4127022396899258385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

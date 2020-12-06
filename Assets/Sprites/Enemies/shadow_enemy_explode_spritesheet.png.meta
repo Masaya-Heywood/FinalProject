@@ -1,7 +1,64 @@
 fileFormatVersion: 2
 guid: 5eca12c91c6d9bb43b3f7c2c286db291
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 8468754797595255333
+    second: shadow_enemy_explode_spritesheet_0
+  - first:
+      213: 8239875089944205771
+    second: shadow_enemy_explode_spritesheet_1
+  - first:
+      213: -4639962733817394099
+    second: shadow_enemy_explode_spritesheet_2
+  - first:
+      213: -5481535854883829882
+    second: shadow_enemy_explode_spritesheet_3
+  - first:
+      213: 4440665693695161973
+    second: shadow_enemy_explode_spritesheet_4
+  - first:
+      213: 5839558617042640229
+    second: shadow_enemy_explode_spritesheet_5
+  - first:
+      213: -4645120114410259297
+    second: shadow_enemy_explode_spritesheet_6
+  - first:
+      213: 7104157711360219876
+    second: shadow_enemy_explode_spritesheet_7
+  - first:
+      213: 5355853475220616048
+    second: shadow_enemy_explode_spritesheet_8
+  - first:
+      213: 4072576229582046852
+    second: shadow_enemy_explode_spritesheet_9
+  - first:
+      213: 7006030530547196238
+    second: shadow_enemy_explode_spritesheet_10
+  - first:
+      213: 2732151789336928473
+    second: shadow_enemy_explode_spritesheet_11
+  - first:
+      213: 954473713761779238
+    second: shadow_enemy_explode_spritesheet_12
+  - first:
+      213: -1839469585030619425
+    second: shadow_enemy_explode_spritesheet_13
+  - first:
+      213: -5190747349172801466
+    second: shadow_enemy_explode_spritesheet_14
+  - first:
+      213: -8648459136429168408
+    second: shadow_enemy_explode_spritesheet_15
+  - first:
+      213: -5680766078537099576
+    second: shadow_enemy_explode_spritesheet_16
+  - first:
+      213: 5006058748413014110
+    second: shadow_enemy_explode_spritesheet_17
+  - first:
+      213: -2795230169704307630
+    second: shadow_enemy_explode_spritesheet_18
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +98,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -73,9 +130,432 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: shadow_enemy_explode_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 7
+        width: 94
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 522ec887e9f078570800000000000000
+      internalID: 8468754797595255333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_enemy_explode_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 0
+        width: 107
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc9d6b1dcbae95270800000000000000
+      internalID: 8239875089944205771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_enemy_explode_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 13
+        width: 123
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4c83c72a7a8b9fb0800000000000000
+      internalID: -4639962733817394099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_enemy_explode_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 5
+        width: 134
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6870512be2cade3b0800000000000000
+      internalID: -5481535854883829882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_enemy_explode_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 5
+        width: 133
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 576b6f6bbe960ad30800000000000000
+      internalID: 4440665693695161973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_enemy_explode_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 1
+        width: 148
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56dd5e57f974a0150800000000000000
+      internalID: 5839558617042640229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_enemy_explode_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 1
+        width: 147
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9cfd89edd7398fb0800000000000000
+      internalID: -4645120114410259297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_enemy_explode_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 14
+        width: 115
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ea5afd8cc9079260800000000000000
+      internalID: 7104157711360219876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_enemy_explode_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 137
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 073f093fb50d35a40800000000000000
+      internalID: 5355853475220616048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_enemy_explode_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 10
+        width: 107
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48600fcd082b48830800000000000000
+      internalID: 4072576229582046852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_enemy_explode_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 1339
+        y: 96
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e41aec2e5ab6a3160800000000000000
+      internalID: 7006030530547196238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_enemy_explode_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 1342
+        y: 94
+        width: 24
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d020eba39d8ae520800000000000000
+      internalID: 2732151789336928473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_enemy_explode_spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 1221
+        y: 71
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62ef73029c8fe3d00800000000000000
+      internalID: 954473713761779238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_enemy_explode_spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 1340
+        y: 73
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fde5d198824e876e0800000000000000
+      internalID: -1839469585030619425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_enemy_explode_spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 59
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64031c5a9c2c6f7b0800000000000000
+      internalID: -5190747349172801466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_enemy_explode_spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 1349
+        y: 45
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e868a6ac308af780800000000000000
+      internalID: -8648459136429168408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_enemy_explode_spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 1335
+        y: 49
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c615bc795dd921b0800000000000000
+      internalID: -5680766078537099576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_enemy_explode_spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 9
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e50f4ef88e7197540800000000000000
+      internalID: 5006058748413014110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shadow_enemy_explode_spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 1324
+        y: 10
+        width: 22
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 254e15d68f85539d0800000000000000
+      internalID: -2795230169704307630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

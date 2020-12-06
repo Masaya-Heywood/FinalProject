@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6781976805107319678}
   m_Layer: 10
   m_Name: bulletPenetrate
-  m_TagString: bulletNormal
+  m_TagString: bulletPenetrate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

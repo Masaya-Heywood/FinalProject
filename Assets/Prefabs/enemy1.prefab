@@ -17,8 +17,9 @@ GameObject:
   - component: {fileID: 5017739718265780680}
   - component: {fileID: 7686605877992988567}
   - component: {fileID: 9011286880109576836}
+  - component: {fileID: 2362399930928459117}
   m_Layer: 12
-  m_Name: enemy_placeholder
+  m_Name: enemy1
   m_TagString: enemy1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,6 +173,7 @@ MonoBehaviour:
   leapForce: 0
   hitSound: {fileID: 8300000, guid: 803a9f258ec46f042bbf951503649a9b, type: 3}
   hpImage: {fileID: 3623658144392290551}
+  enemyNum: 1
 --- !u!95 &5017739718265780680
 Animator:
   serializedVersion: 3
@@ -297,6 +299,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50275b4aeb3a3e544b6e0d53a8e98572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2362399930928459117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569669033659582062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bb2ea6757557634bb9edf1cf0551d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3027892268415284421
@@ -434,7 +448,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &982339779280123272
 MonoBehaviour:
