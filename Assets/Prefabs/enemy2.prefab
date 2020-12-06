@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88aa68729a296154fb09c0c4f6f58ae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodeDistance: 3.5
+  explodeDistance: 4
 --- !u!1 &3027892268415284421
 GameObject:
   m_ObjectHideFlags: 0

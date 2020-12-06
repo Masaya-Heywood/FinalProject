@@ -100,6 +100,7 @@ MonoBehaviour:
   health: 3
   timeAmount: 0.5
   tookDamage: 0
+  hitSound: {fileID: 8300000, guid: cc963fefc4e2dde449de7b66ce36dd96, type: 3}
 --- !u!82 &5050713160867838536
 AudioSource:
   m_ObjectHideFlags: 0

@@ -104,7 +104,6 @@ public class fiendLogic : MonoBehaviour
             audioSource.PlayOneShot(hitSound);
             health -= collision.gameObject.GetComponent<BulletController>().bulletDamage;
             hpImage.fillAmount -= collision.gameObject.GetComponent<BulletController>().bulletDamage / totalHealth;
-            Destroy(collision.gameObject);
 
             Debug.Log(Mathf.Cos((collision.gameObject.transform.eulerAngles.z)));
 

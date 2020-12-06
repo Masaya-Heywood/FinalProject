@@ -10,7 +10,7 @@ public class ObjectHealth : MonoBehaviour
     public bool tookDamage = false;
     private AudioSource audioSource;
     private SpriteRenderer spriteRenderer;
-
+    public AudioClip hitSound;
 
     private void Start()
     {
@@ -29,6 +29,7 @@ public class ObjectHealth : MonoBehaviour
                 timer -= Time.deltaTime;
             } else if (timer < 0)
             {
+                
                 spriteRenderer.color = new Color(1f, 1, 1f, 1f);
                 tookDamage = false;
                 timer = timeAmount;
@@ -38,5 +39,20 @@ public class ObjectHealth : MonoBehaviour
         {
             Destroy(gameObject);
          }
+    }
+
+    void OnTriggerEnter2D(UnityEngine.Collider2D collision)
+    {
+        if (collision.gameObject.tag == "blade")
+        {
+            audioSource.PlayOneShot(hitSound);
+            health -= 1;
+            tookDamage = true;
+        }
+
+        if (collision.gameObject.tag == "bulletNormal" || collision.gameObject.tag == "bulletBounce" || collision.gameObject.tag == "bulletPenetrate") {
+            audioSource.PlayOneShot(hitSound);
+
+        }
     }
 }

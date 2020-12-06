@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     //highLight
     private GameObject[] highLight = new GameObject[4];
     //ammo num
-    private int[] ammoNum = new int[3];
+    private int[] ammoNum = new int[4];
     //the ammo you can collect
     private int collectNum = 6;
     //the max ammo you can have
@@ -153,6 +153,7 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     hasWeapon[i] = true;
+                    highLight[i].SetActive(false); 
 
                 }
                 
@@ -432,6 +433,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         //take damage from enemy
         if (collision.gameObject.tag == "enemy1")
         {
@@ -464,16 +466,17 @@ public class PlayerController : MonoBehaviour
                 SceneManager.LoadScene(nextScene);
                 clearCanvas.SetActive(true);
                 talkDoor = true;
-                audioSource.PlayOneShot(openDoor);
+                //audioSource.PlayOneShot(openDoor);
                 clearGame = true;
 
                 //display dialogue
+                /*
                 if (!talkDoor)
                 {
                     GameObject.Find("DoorDialogue").GetComponent<DialogueTrigger>().TriggerDialogue();
                     GameObject.Find("DialogueBox").GetComponent<RectTransform>().localPosition = new Vector3(-16, -178, 0);
                     talkDoor = true;
-                }
+                }*/
 
 
             }

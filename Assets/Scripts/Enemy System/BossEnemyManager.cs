@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BossEnemyManager : MonoBehaviour
 {
@@ -56,6 +57,9 @@ public class BossEnemyManager : MonoBehaviour
             spawnedEnemy.GetComponent<Unit>().target = player.GetComponent<Transform>();
             spawnedEnemy.GetComponent<Unit>().mySpawner = null;
 
+        }
+        if (health <= 0) {
+            SceneManager.LoadScene("EndScene");
         }
     }
 
