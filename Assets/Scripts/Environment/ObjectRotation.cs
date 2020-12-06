@@ -22,7 +22,7 @@ public class ObjectRotation : MonoBehaviour
 
 
 
-            //If Cassie doesn't get around to making the door script, she can write these lines of code that scale the object up and down continuously.
+            //Portion of script for Cassie to write. These lines of code should scale the object up and down continuously.
             //if (game object scale > a certainAmount)
             //{
             //    game object scale -= new Vector3(something, something, something)
