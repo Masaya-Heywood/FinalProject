@@ -180,6 +180,11 @@ public class PlayerController : MonoBehaviour
             ammoNumText[i].text = ammoNum[i].ToString();
         }
 
+        throwWeaponPrefab = ((GameObject)Resources.Load("knifePickup")).GetComponent<ThrowWeaponController>();
+        weaponNum = 4;
+        eraseHighLight();
+        audioSource.PlayOneShot(getWeapon);
+        highLight[weaponNum - 1].SetActive(true);
     }
 
     // Update is called once per frame
@@ -224,11 +229,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) {
             //display next sentence
             dialogueManager.DisplayNextSentence();
-        }
-        //delete the code above after testing the dialogue system
-
-        if (Input.GetKeyDown(KeyCode.Alpha9)) {
-            SceneManager.LoadScene("LevelTwo");
         }
 
         //changing weapons
