@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
 
     //player's movement speed
-    public float speed = 3.0f;
+    public float speed = 6.0f;
 
 
 
@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
     //the ammo you can collect
     private int collectNum = 6;
     //the max ammo you can have
-    private int maxAmmo = 36;
+    private int maxAmmo = 10000;
     //weapon in ammo slot
     private GameObject[] ammoWeapon = new GameObject[4];
 
@@ -88,6 +88,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip enemyAtackStound;
     public AudioClip openDoor;
     public AudioClip bladeSwing;
+    public AudioClip breakSound;
 
     private CameraShake mainCamera;
 
@@ -466,7 +467,8 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 SceneManager.LoadScene(nextScene);
-                clearCanvas.SetActive(true);
+                if(clearCanvas != null)
+                    clearCanvas.SetActive(true);
                 //audioSource.PlayOneShot(openDoor);
                 clearGame = true;
 
@@ -677,6 +679,10 @@ public class PlayerController : MonoBehaviour
         hitEnemyTimer = 0.3f;
 
         Invoke("startParticle", 0.2f);
+    }
+
+    public void playBreakSound() {
+        audioSource.PlayOneShot(breakSound);
     }
 
     

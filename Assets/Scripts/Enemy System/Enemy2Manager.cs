@@ -32,7 +32,6 @@ public class Enemy2Manager : MonoBehaviour
             enemyNumManager.decreaseEnemyNum();
             Destroy(this.gameObject);
         }
-        Debug.Log(Vector3.Distance(player.position, this.transform.position));
         if (Vector3.Distance(player.position, this.transform.position) < explodeDistance) {
             //Instantiate(((GameObject)Resources.Load("EnemyExplodeEffect")), this.transform.position, Quaternion.identity);
             Instantiate(((GameObject)Resources.Load("Enemy2Dead")), this.transform.position, Quaternion.identity);

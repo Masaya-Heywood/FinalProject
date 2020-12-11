@@ -39,6 +39,12 @@ public class BossEnemyManager : MonoBehaviour
     private bool startDeath = false;
     public GameObject[] destroyObjects;
     public GameObject mainCamera;
+
+    public GameObject projectile;
+    private float countP = 0;
+    private float nextProjectile = 3.0f;
+    public float projectileVelocity = 1.5f;
+
     private void Start()
     {
         anim = this.GetComponent<Animator>();
@@ -62,6 +68,16 @@ public class BossEnemyManager : MonoBehaviour
     {
         if (endFlag)
             return;
+
+        countP += Time.deltaTime;
+        if (countP >= nextProjectile) {
+            nextProjectile = Random.Range(2, 5);
+            countP = 0;
+            var obj = Instantiate(projectile, this.transform.position, Quaternion.identity);
+            var dir = GetAngle(this.transform.position, player.transform.position);
+            var v = new Vector2(Mathf.Cos(dir / 180 * Mathf.PI), Mathf.Sin(dir / 180 * Mathf.PI));
+            obj.GetComponent<Rigidbody2D>().velocity = v * projectileVelocity;
+        }
         if (endTimer > 0)
         {
             endTimer -= Time.deltaTime;
@@ -179,5 +195,14 @@ public class BossEnemyManager : MonoBehaviour
     {
         
 
+    }
+
+    //function for getting the angle between two positions
+    float GetAngle(Vector2 from, Vector2 to)
+    {
+        var dx = to.x - from.x;
+        var dy = to.y - from.y;
+        var rad = Mathf.Atan2(dy, dx);
+        return rad * Mathf.Rad2Deg;
     }
 }
