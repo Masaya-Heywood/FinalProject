@@ -42,7 +42,7 @@ public class BossEnemyManager : MonoBehaviour
 
     public GameObject projectile;
     private float countP = 0;
-    private float nextProjectile = 3.0f;
+    private float nextProjectile = 1.5f;
     public float projectileVelocity = 1.5f;
 
     private void Start()

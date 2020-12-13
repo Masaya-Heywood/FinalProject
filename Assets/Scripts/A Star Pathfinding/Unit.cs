@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Dynamic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 //credit to Sebastian Lauge 
@@ -12,8 +13,9 @@ public class Unit : MonoBehaviour
 	public int aggroThreshold = 10;
 	private Rigidbody2D rb2D;
 	public GameObject mySpawner;
+	private float timer = 1;
 
-  
+
 
 	Vector2[] path;
 	public Vector2 pathDirection;
@@ -25,11 +27,24 @@ public class Unit : MonoBehaviour
 		StartCoroutine(RefreshPath());
 		rb2D = gameObject.GetComponent<Rigidbody2D>();
 		target = GameObject.Find("Player").GetComponent<Transform>();
+
+		if (SceneManager.GetActiveScene().name == "NewLevel" || SceneManager.GetActiveScene().name == "LevelThree" || SceneManager.GetActiveScene().name == "LevelFour")
+		{
+			speed += 70;
+		}
 	}
 
 	void Update()
 	{
 		dist = Mathf.RoundToInt(Vector2.Distance((Vector2)target.position, (Vector2)transform.position));
+
+		timer -= Time.deltaTime;
+
+		if (timer <= 0 && speed < 200)
+		{
+			speed += 2;
+			timer = 1;
+		}
 	}
 
 	IEnumerator RefreshPath()
@@ -53,7 +68,7 @@ public class Unit : MonoBehaviour
 
 	IEnumerator FollowPath()
 	{
-		if (path.Length > 0 && dist <= aggroThreshold && path.Length < 4)
+		if (path.Length > 0 && dist <= aggroThreshold && path.Length < 6)
 		{
 			targetIndex = 0;
 			Vector2 currentWaypoint = path[0];
