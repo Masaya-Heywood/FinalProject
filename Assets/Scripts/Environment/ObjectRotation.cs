@@ -7,7 +7,7 @@ public class ObjectRotation : MonoBehaviour
     float rotateTime = 0;
     float changeSpeed = .25f;
     int rotateAmount = 40;
-    float scaleAmount = 0.9f;
+    float scaleAmount = 1.0f;
     
 
     private void Update()
@@ -25,12 +25,12 @@ public class ObjectRotation : MonoBehaviour
 
             //written by cassie
             //scale the object up and down continuously.
-            if(gameObject.transform.localScale.x > scaleAmount)
+            if(gameObject.transform.localScale.x >= scaleAmount)
             {
-                gameObject.transform.localScale -= new Vector3(scaleAmount, scaleAmount, 0);
+                gameObject.transform.localScale -= new Vector3(0.05f, 0.05f, 0);
             }else if(gameObject.transform.localScale.x < scaleAmount)
                 {
-                gameObject.transform.localScale += new Vector3(scaleAmount, scaleAmount, 0);
+                gameObject.transform.localScale += new Vector3(0.05f, 0.05f, 0);
                 }
             rotateTime = 0;
         }

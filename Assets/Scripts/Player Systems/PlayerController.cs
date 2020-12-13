@@ -90,6 +90,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip bladeSwing;
     public AudioClip breakSound;
 
+    public AudioClip shootGaleforce;
+    public AudioClip shootShotgun;
+
     private CameraShake mainCamera;
 
     public GameObject clearCanvas;
@@ -404,7 +407,13 @@ public class PlayerController : MonoBehaviour
             {
                 if (ammoNum[weaponNum-1] >= shotCount &&  shotTimer > shotInterval)
                 {
-                    audioSource.PlayOneShot(shootSound1);
+                    if (weaponNum == 3)
+                        audioSource.PlayOneShot(shootGaleforce);
+                    else if(weaponNum == 2)
+                        audioSource.PlayOneShot(shootShotgun);
+                    else
+                        audioSource.PlayOneShot(shootSound1);
+
                     mainCamera.Shake(0.25f,0.1f);
 
                     animator.SetBool("hasPistol", true);

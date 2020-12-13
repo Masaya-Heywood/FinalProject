@@ -69,15 +69,7 @@ public class BossEnemyManager : MonoBehaviour
         if (endFlag)
             return;
 
-        countP += Time.deltaTime;
-        if (countP >= nextProjectile) {
-            nextProjectile = Random.Range(2, 5);
-            countP = 0;
-            var obj = Instantiate(projectile, this.transform.position, Quaternion.identity);
-            var dir = GetAngle(this.transform.position, player.transform.position);
-            var v = new Vector2(Mathf.Cos(dir / 180 * Mathf.PI), Mathf.Sin(dir / 180 * Mathf.PI));
-            obj.GetComponent<Rigidbody2D>().velocity = v * projectileVelocity;
-        }
+       
         if (endTimer > 0)
         {
             endTimer -= Time.deltaTime;
@@ -101,6 +93,16 @@ public class BossEnemyManager : MonoBehaviour
             return;
         }
         timer -= Time.deltaTime;
+        countP += Time.deltaTime;
+        if (countP >= nextProjectile)
+        {
+            nextProjectile = Random.Range(2, 5);
+            countP = 0;
+            var obj = Instantiate(projectile, this.transform.position, Quaternion.identity);
+            var dir = GetAngle(this.transform.position, player.transform.position);
+            var v = new Vector2(Mathf.Cos(dir / 180 * Mathf.PI), Mathf.Sin(dir / 180 * Mathf.PI));
+            obj.GetComponent<Rigidbody2D>().velocity = v * projectileVelocity;
+        }
         if (timer <= 0)
         {
             timer = spawnSpan;

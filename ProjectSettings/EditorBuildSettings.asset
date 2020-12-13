@@ -11,13 +11,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gameplay Scenes/LevelOne.unity
     guid: f6412a7852cfeed40843f629ac658ecd
-  - enabled: 1
-    path: Assets/Scenes/Gameplay Scenes/LevelThree.unity
+  - enabled: 0
+    path: Assets/Scenes/Gameplay Scenes/LevelTwo.unity
     guid: 3352396f5a0e44b459a79b8f1a641c09
   - enabled: 1
-    path: Assets/Scenes/Gameplay Scenes/LevelFour.unity
+    path: Assets/Scenes/Gameplay Scenes/LevelThree.unity
     guid: 13dfba932fd086542a97c5ff2fc47bae
   - enabled: 1
     path: Assets/Scenes/Test Scenes/EndScreen.unity
     guid: f9c0cc2bb1d9f8741be0cd8dcfb97ee6
+  - enabled: 1
+    path: Assets/Scenes/Gameplay Scenes/NewLevel.unity
+    guid: 5714afe8746245b4fb7304fb84bee83a
+  - enabled: 1
+    path: Assets/Scenes/Gameplay Scenes/LevelFour.unity
+    guid: 386a7bbd30c15f347a3ec0e782b6abf3
   m_configObjects: {}
