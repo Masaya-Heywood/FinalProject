@@ -3724,7 +3724,7 @@ MonoBehaviour:
   bladeSwing: {fileID: 8300000, guid: 9d9cfe7e352862a4383dec4de622b46c, type: 3}
   breakSound: {fileID: 8300000, guid: cc963fefc4e2dde449de7b66ce36dd96, type: 3}
   clearCanvas: {fileID: 1532816885}
-  nextScene: LevelTwo
+  nextScene: LevelThree
   spawnPoint: {x: -17, y: -3, z: 0}
 --- !u!212 &130031013
 SpriteRenderer:
